@@ -21,9 +21,18 @@ public class LevelManager : MonoBehaviour {
 
     }
 
+    void UnloadCurrent() {
+        Destroy(currentLevel);
+        currentLevel = null;
+    }
+
+    public void UnloadLevel() {
+        UnloadCurrent();
+    }
+
     public void LoadLevel(string levelID, string spawnpointID) {
         if(currentLevel != null) {
-            Destroy(currentLevel);
+            UnloadCurrent();
         }
 
         //Unload previous level
