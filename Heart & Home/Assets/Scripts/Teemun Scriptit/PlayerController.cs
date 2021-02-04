@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
     Rigidbody2D playerRB;
-    [SerializeField] bool grounded = false;
-    [SerializeField] bool jumpInput = false;
-    //[Range(0.1f, 10f)] public float speed = 1f;
     [Range(0.1f, 10f)] public float jumpForce = 2f;
     [Range(0.1f, 10f)] public float groundFrictionWhenNoInput = 2f;
     [Range(0.1f, 10f)] public float airFrictionWhenNoInput = 2f;
     [Range(1f, 20f)] public float horizontalAccel = 1;
     [Range(1f, 30f)] public float horizontalMaxSpeed = 5;
+    public bool grounded;
     bool jump;
     float deadzone = 0.1f;
 
@@ -20,7 +18,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetButtonDown("Jump")) {
+        if (Input.GetButtonDown("Jump") && grounded) {
             jump = true;
         }
        
