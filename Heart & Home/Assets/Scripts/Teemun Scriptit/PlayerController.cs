@@ -13,11 +13,19 @@ public class PlayerController : MonoBehaviour {
     bool jump;
     float deadzone = 0.1f;
 
+    //Camera stuff
+    //[Range(0f, 3f)]float cameraOffSet;
+    //Vector3 camPos;
+    //Vector3 newCamPos;
+
     void Start() {
         playerRB = GetComponent<Rigidbody2D>();
     }
 
     void Update() {
+        //camPos = new Vector3(playerRB.position.x, playerRB.position.y, -10);
+        //newCamPos = new Vector2(cameraOffSet, 0);
+
         if (Input.GetButtonDown("Jump") && grounded) {
             jump = true;
         }
@@ -40,7 +48,33 @@ public class PlayerController : MonoBehaviour {
             jump = false;
             //playerRB.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
-       
+
+
+        //Camera manipulation ei toiminut hyvin
+        //if(horizontalInput.x > 0) {
+        //    cameraOffSet += Time.deltaTime;
+        //    Camera.main.transform.position += newCamPos * Time.deltaTime;
+        //}
+        //else if(horizontalInput.x < 0) {
+        //    cameraOffSet -= Time.deltaTime;
+        //    Camera.main.transform.position -= newCamPos * Time.deltaTime;
+        //}
+        //else {
+        //    Camera.main.transform.position = camPos;
+            //if (cameraOffSet > 0) {
+            //    cameraOffSet -= Time.deltaTime;
+            //    if (cameraOffSet == 0) {
+            //        Camera.main.transform.position = camPos;
+            //    }
+            //}
+            //else if(cameraOffSet < 0) {
+            //    cameraOffSet += Time.deltaTime;
+            //    if(cameraOffSet == 0) {
+            //        Camera.main.transform.position = camPos;
+            //    }
+            //}
+        //}
+
 
         playerRB.velocity = newVelocity;
     }
