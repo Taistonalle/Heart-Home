@@ -6,6 +6,7 @@ public class Gamemanager : MonoBehaviour {
     [SerializeField] GameState gameState;
     LevelManager levelManager;
     KitchenManager kitchenManager;
+    public GameObject Camera;
     void Start() {
         gameState = GameState.Menu;
         levelManager = FindObjectOfType<LevelManager>();
@@ -18,6 +19,7 @@ public class Gamemanager : MonoBehaviour {
 
     void GoToPlatforming() {
         levelManager.LoadLevel("Level1", "Start");
+        Camera.GetComponent<PlayerFollower>().followingPlayer = true;
     }
 
     void ExitKitchen() {
@@ -26,6 +28,8 @@ public class Gamemanager : MonoBehaviour {
 
     void ExitPlatforming() {
         levelManager.UnloadLevel();
+        Camera.GetComponent<PlayerFollower>().followingPlayer = false;
+        Camera.transform.position = Camera.GetComponent<PlayerFollower>().startingPosition;
     }
 
     void StartState(GameState newState) {
