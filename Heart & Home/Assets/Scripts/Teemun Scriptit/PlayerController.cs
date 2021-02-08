@@ -9,7 +9,9 @@ public class PlayerController : MonoBehaviour {
     [Range(0.1f, 10f)] public float airFrictionWhenNoInput = 2f;
     [Range(1f, 20f)] public float horizontalAccel = 1;
     [Range(1f, 30f)] public float horizontalMaxSpeed = 5;
+    public float gravity = 9.81f;
     public bool grounded;
+    float glideGravity;
     bool jump;
     float deadzone = 0.1f;
 
@@ -20,17 +22,18 @@ public class PlayerController : MonoBehaviour {
 
     void Start() {
         playerRB = GetComponent<Rigidbody2D>();
+        glideGravity = gravity / 3;
     }
 
     void Update() {
         //camPos = new Vector3(playerRB.position.x, playerRB.position.y, -10);
         //newCamPos = new Vector2(cameraOffSet, 0);
-
         if (Input.GetButtonDown("Jump") && grounded) {
             jump = true;
         }
-       
-        //jump = Input.GetButtonDown("Jump");
+
+        gravity = Input.GetButton("Jump") ? gravity = glideGravity : gravity = 9.81f; 
+                                                                                     
     }
 
     void FixedUpdate() {
@@ -49,6 +52,10 @@ public class PlayerController : MonoBehaviour {
             //playerRB.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
 
+        playerRB.velocity = newVelocity + new Vector2(0, grounded ? 0 : -gravity * Time.deltaTime); // Uusi Vector2 lisää custom gravityn velocity.y kohtaan.
+                                                      // Jos maassa, antaa arvon nolla, muuten miinustaa custom gravityn y akseliin.
+
+
 
         //Camera manipulation ei toiminut hyvin
         //if(horizontalInput.x > 0) {
@@ -61,21 +68,19 @@ public class PlayerController : MonoBehaviour {
         //}
         //else {
         //    Camera.main.transform.position = camPos;
-            //if (cameraOffSet > 0) {
-            //    cameraOffSet -= Time.deltaTime;
-            //    if (cameraOffSet == 0) {
-            //        Camera.main.transform.position = camPos;
-            //    }
-            //}
-            //else if(cameraOffSet < 0) {
-            //    cameraOffSet += Time.deltaTime;
-            //    if(cameraOffSet == 0) {
-            //        Camera.main.transform.position = camPos;
-            //    }
-            //}
+        //if (cameraOffSet > 0) {
+        //    cameraOffSet -= Time.deltaTime;
+        //    if (cameraOffSet == 0) {
+        //        Camera.main.transform.position = camPos;
+        //    }
+        //}
+        //else if(cameraOffSet < 0) {
+        //    cameraOffSet += Time.deltaTime;
+        //    if(cameraOffSet == 0) {
+        //        Camera.main.transform.position = camPos;
+        //    }
+        //}
         //}
 
-
-        playerRB.velocity = newVelocity;
     }
 }

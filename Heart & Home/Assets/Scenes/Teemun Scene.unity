@@ -481,6 +481,7 @@ MonoBehaviour:
   airFrictionWhenNoInput: 1
   horizontalAccel: 6
   horizontalMaxSpeed: 10
+  gravity: 9.81
   grounded: 0
 --- !u!61 &1741158965
 BoxCollider2D:
@@ -523,7 +524,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 64f9b5d25898dc94390605cd104cf010, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
