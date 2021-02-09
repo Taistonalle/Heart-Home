@@ -8,6 +8,11 @@ public class PlayerFollower : MonoBehaviour
     public GameObject Player;
     public bool followingPlayer;
     public Vector3 startingPosition;
+    public Vector3 offset;
+    public float zoomSpeed = 4.0f;
+    public float minZoom = 5f;
+    public float maxZoom = 15f;
+    private float currentzoom = 10f;
     void Start()
     {
         startingPosition = transform.position;
@@ -16,9 +21,12 @@ public class PlayerFollower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        currentzoom -= Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
+        currentzoom = Mathf.Clamp(currentzoom, minZoom, maxZoom);
+    }
+    private void LateUpdate() {
         if (followingPlayer == true) {
-            var targetPos = Player.transform.position + new Vector3(0, 0, -10);
-            transform.position = targetPos;
+            transform.position = Player.transform.position - offset * currentzoom;
         }
     }
 }

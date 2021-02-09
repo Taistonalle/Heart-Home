@@ -22,6 +22,13 @@ public class InventorySlot : MonoBehaviour
     public void AddItem(ItemData newItem) {
         item = newItem;
 
-        //icon.sprite = item.icon;
+        icon.sprite = item.sprite;
+        icon.enabled = true;
+    }
+
+    public void ClearSlot() {
+        item = null;
+        icon.sprite = null;
+        icon.enabled = false;
     }
 }
