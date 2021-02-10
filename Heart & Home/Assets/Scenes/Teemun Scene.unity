@@ -805,6 +805,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kitchen
       objectReference: {fileID: 0}
+    - target: {fileID: 1674961121651069808, guid: 0413fa95798e81a4c99b70a57b91bce8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7259513765048427874, guid: 0413fa95798e81a4c99b70a57b91bce8, type: 3}
       propertyPath: m_RootOrder
       value: 5

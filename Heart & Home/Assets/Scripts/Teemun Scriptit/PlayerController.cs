@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour {
     [Range(0.1f, 10f)] public float airFrictionWhenNoInput = 2f;
     [Range(1f, 20f)] public float horizontalAccel = 1;
     [Range(1f, 30f)] public float horizontalMaxSpeed = 5;
+    public int dashCount = 1;
     public float gravity = 9.81f;
     public bool grounded;
     float glideGravity;
@@ -51,54 +52,59 @@ public class PlayerController : MonoBehaviour {
         var up = new Vector2(0f, 1f);
         var down = new Vector2(0f, -1f);
 
-        if (horiInput.x > 0 && vertiInput.y > 0 && canDash) {
+        if (horiInput.x > 0 && vertiInput.y > 0 && canDash && dashCount == 1) {
             print("Dash up right");
+            dashCount--;
             StartCoroutine(dashTimer());
             StartCoroutine(walkTimer());
             playerRB.AddForce(upRight * dashForce, ForceMode2D.Impulse);
         }
-        else if (horiInput.x > 0 && vertiInput.y < 0 && canDash) {
-            print("Dash down right");
-            StartCoroutine(dashTimer());
-            StartCoroutine(walkTimer());
-            playerRB.AddForce(downRight * dashForce, ForceMode2D.Impulse);
-        }
-        else if (horiInput.x < 0 && vertiInput.y > 0 && canDash) {
+        //else if (horiInput.x > 0 && vertiInput.y < 0 && canDash) {
+        //    print("Dash down right");
+        //    StartCoroutine(dashTimer());
+        //    StartCoroutine(walkTimer());
+        //    playerRB.AddForce(downRight * dashForce, ForceMode2D.Impulse);
+        //}
+        else if (horiInput.x < 0 && vertiInput.y > 0 && canDash && dashCount == 1) {
             print("Dash up left");
+            dashCount--;
             StartCoroutine(dashTimer());
             StartCoroutine(walkTimer());
             playerRB.AddForce(upLeft * dashForce, ForceMode2D.Impulse);
         }
-        else if (horiInput.x < 0 && vertiInput.y < 0 && canDash) {
-            print("Dash down left");
-            StartCoroutine(dashTimer());
-            StartCoroutine(walkTimer());
-            playerRB.AddForce(downLeft * dashForce, ForceMode2D.Impulse);
-        }
-        else if (horiInput.x > 0 && canDash) {
+        //else if (horiInput.x < 0 && vertiInput.y < 0 && canDash) {
+        //    print("Dash down left");
+        //    StartCoroutine(dashTimer());
+        //    StartCoroutine(walkTimer());
+        //    playerRB.AddForce(downLeft * dashForce, ForceMode2D.Impulse);
+        //}
+        else if (horiInput.x > 0 && canDash && dashCount == 1) {
             print("Dash right");
+            dashCount--;
             StartCoroutine(dashTimer());
             StartCoroutine(walkTimer());
             playerRB.AddForce(right * dashForce, ForceMode2D.Impulse);
         }
-        else if (horiInput.x < 0 && canDash) {
+        else if (horiInput.x < 0 && canDash && dashCount == 1) {
             print("Dash left");
+            dashCount--;
             StartCoroutine(dashTimer());
             StartCoroutine(walkTimer());
             playerRB.AddForce(left * dashForce, ForceMode2D.Impulse);
         }
-        else if (vertiInput.y > 0 && canDash) {
+        else if (vertiInput.y > 0 && canDash && dashCount == 1) {
             print("Dash up");
+            dashCount--;
             StartCoroutine(dashTimer());
             StartCoroutine(walkTimer());
             playerRB.AddForce(up * dashForce, ForceMode2D.Impulse);
         }
-        else if (vertiInput.y < 0 && canDash) {
-            print("Dash down");
-            StartCoroutine(dashTimer());
-            StartCoroutine(walkTimer());
-            playerRB.AddForce(down * dashForce, ForceMode2D.Impulse);
-        }
+        //else if (vertiInput.y < 0 && canDash) {
+        //    print("Dash down");
+        //    StartCoroutine(dashTimer());
+        //    StartCoroutine(walkTimer());
+        //    playerRB.AddForce(down * dashForce, ForceMode2D.Impulse);
+        //}
     }
 
     void Start() {
@@ -111,6 +117,10 @@ public class PlayerController : MonoBehaviour {
         //newCamPos = new Vector2(cameraOffSet, 0);
         if (Input.GetButtonDown("Jump") && grounded) {
             jump = true;
+        }
+
+        if (grounded) {
+            dashCount = 1;
         }
 
         dash = Input.GetKey(KeyCode.LeftShift) ? true : false;
