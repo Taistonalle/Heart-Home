@@ -12,20 +12,21 @@ public class InventoryManager : MonoBehaviour {
     }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.I)) {
-            var s = "";
-            foreach(var item in kitchenInv.items) {
-                //Enum.GetName(typeof(ItemType), item.kind)); 
+        //if (Input.GetKeyDown(KeyCode.I)) {
+        //    var s = "";
+        //    foreach(var item in kitchenInv.items) {
+        //        //Enum.GetName(typeof(ItemType), item.kind)); 
             
-            s += item.kind + " ";
-            }
+        //    s += item.kind + " ";
+        //    }
 
-            print(s);
-        }
+        //    print(s);
+        //}
     }
 
     public void AddItem(ItemDataScriptable item) {
         kitchenInv.items.Add(new ItemData(item));
+        print(item.sprite);
         if (onItemChangeCallback != null) {
             onItemChangeCallback.Invoke();
         }
