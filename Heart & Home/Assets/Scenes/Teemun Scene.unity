@@ -372,7 +372,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 0.5}
+  m_Size: {x: 0.85, y: 0.5}
   m_EdgeRadius: 0
 --- !u!1 &1228036954
 GameObject:
@@ -549,6 +549,7 @@ MonoBehaviour:
   airFrictionWhenNoInput: 1
   horizontalAccel: 6
   horizontalMaxSpeed: 10
+  dashCount: 1
   gravity: 9.81
   grounded: 0
   dash: 0
