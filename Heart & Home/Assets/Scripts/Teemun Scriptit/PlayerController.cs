@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
+    const float skinWidth = 0.015f;
+    //public int horizontalRayCount = 4; 
+    //public int verticalRayCount = 4;
+    float horizontalRaySpacing, verticalRaySpacing;
+
+    BoxCollider2D collider;
+    RaycastOrigins raycastOrigins;
+    public LayerMask collisionMask;
+
     Rigidbody2D playerRB;
     [Range(0.1f, 10f)] public float jumpForce = 2f;
     [Range(10, 100f)] public float dashForce = 10f;
@@ -25,6 +34,125 @@ public class PlayerController : MonoBehaviour {
     //[Range(0f, 3f)]float cameraOffSet;
     //Vector3 camPos;
     //Vector3 newCamPos;
+
+    void UpdateRaycastOrigins() {
+        Bounds bounds = collider.bounds;
+        bounds.Expand(skinWidth * -2);
+
+        raycastOrigins.bottomLeft = new Vector2(bounds.min.x, bounds.min.y);
+        raycastOrigins.bottomRight = new Vector2(bounds.max.x, bounds.min.y);
+        raycastOrigins.topLeft = new Vector2(bounds.min.x, bounds.max.y);
+        raycastOrigins.topRight = new Vector2(bounds.max.x, bounds.max.y);
+    }
+
+    void CalculateRaySpacing() {
+        Bounds bounds = collider.bounds;
+        bounds.Expand(skinWidth * -2);
+
+        //horizontalRayCount = Mathf.Clamp(horizontalRayCount, 2, int.MaxValue);
+        //verticalRayCount = Mathf.Clamp(verticalRayCount, 2, int.MaxValue);
+
+        horizontalRaySpacing = bounds.size.x;
+        verticalRaySpacing = bounds.size.y;
+    }
+
+    //void HorizontalCollisions() {
+    //    var velocityY = playerRB.velocity.y;
+    //    var velocityX = playerRB.velocity.x;
+    //    float dirX = Mathf.Sign(velocityX);
+    //    float rayLenght = Mathf.Abs(velocityX) + skinWidth;
+
+    //    for (int i = 0; i < horizontalRayCount; ++i) {
+    //        var rayOrigin = (dirX == -1) ? raycastOrigins.bottomLeft : raycastOrigins.bottomRight;
+    //        rayOrigin += Vector2.up * (horizontalRaySpacing * i);
+    //        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * dirX, rayLenght, collisionMask);
+
+    //        Debug.DrawRay(rayOrigin, Vector2.right * dirX * rayLenght, Color.red);
+
+    //        if (hit) {
+    //            velocityX = (hit.distance - skinWidth) * dirX;
+    //            rayLenght = hit.distance;
+    //        }
+
+    //    }
+    //}
+
+    //void VerticalCollisions() {
+    //    var velocityY = playerRB.velocity.y;
+    //    var velocityX = playerRB.velocity.x;
+    //    float dirY = Mathf.Sign(velocityY);
+    //    float rayLenght = Mathf.Abs(velocityY) + skinWidth;
+
+    //    for (int i = 0; i < verticalRayCount; ++i) {
+    //        var rayOrigin = (dirY == -1) ? raycastOrigins.bottomLeft : raycastOrigins.topLeft;
+    //        rayOrigin += Vector2.right * (verticalRaySpacing * i + velocityX);
+    //        RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up * dirY, rayLenght, collisionMask);
+
+    //        Debug.DrawRay(rayOrigin, Vector2.up * dirY * rayLenght, Color.red);
+
+    //        if (hit) {
+    //            velocityY = (hit.distance - skinWidth) * dirY;
+    //            rayLenght = hit.distance;
+    //        }
+
+    //    }
+    //}
+
+    void GroundCollision() {
+        float rayLenght = 0.3f;
+        Vector2 rayOrigin1 = raycastOrigins.bottomLeft;
+        Vector2 rayOrigin2 = rayOrigin1 + Vector2.right * (verticalRaySpacing / 3);
+        Vector2 rayOrigin3 = rayOrigin1 + Vector2.right * (verticalRaySpacing / 1.5f);
+        Vector2 rayOrigin4 = rayOrigin1 + Vector2.right * verticalRaySpacing;
+
+        RaycastHit2D ray1 = Physics2D.Raycast(rayOrigin1, Vector2.down, rayLenght + skinWidth, collisionMask);
+        RaycastHit2D ray2 = Physics2D.Raycast(rayOrigin2, Vector2.down, rayLenght + skinWidth, collisionMask);
+        RaycastHit2D ray3 = Physics2D.Raycast(rayOrigin3, Vector2.down, rayLenght + skinWidth, collisionMask);
+        RaycastHit2D ray4 = Physics2D.Raycast(rayOrigin4, Vector2.down, rayLenght + skinWidth, collisionMask);
+
+        if (ray1) {
+            if(ray1 || ray2 || ray3 || ray4) {
+                grounded = true;
+            }
+            Debug.DrawRay(rayOrigin1, Vector2.down * rayLenght, Color.red);
+        }
+        else {
+            Debug.DrawRay(raycastOrigins.bottomLeft, Vector2.down * rayLenght, Color.white);
+        }
+
+        if (ray2) {
+            Debug.DrawRay(rayOrigin2, Vector2.down * rayLenght, Color.red);
+        }
+        else {
+            Debug.DrawRay(rayOrigin2, Vector2.down * rayLenght, Color.white);
+        }
+
+        if (ray3) {
+            Debug.DrawRay(rayOrigin3, Vector2.down * rayLenght, Color.red);
+        }
+        else {
+            Debug.DrawRay(rayOrigin3, Vector2.down * rayLenght, Color.white);
+        }
+
+        if (ray4) {
+            if (ray4 || ray1 || ray2 || ray3) {
+                grounded = true;
+            }
+            Debug.DrawRay(rayOrigin4, Vector2.down * rayLenght, Color.red);
+        }
+        else {
+            Debug.DrawRay(rayOrigin4, Vector2.down * rayLenght, Color.white);
+        }
+
+        if(!ray1 && !ray2 && !ray3 && !ray4) {
+            grounded = false;
+        }
+
+    }
+
+    struct RaycastOrigins {
+        public Vector2 topLeft, topRight, bottomLeft, bottomRight;
+    }
 
     IEnumerator walkTimer() {
         canMoveNormally = false;
@@ -109,10 +237,13 @@ public class PlayerController : MonoBehaviour {
 
     void Start() {
         playerRB = GetComponent<Rigidbody2D>();
+        collider = GetComponent<BoxCollider2D>();
+        CalculateRaySpacing();
         glideGravity = gravity / 3;
     }
 
     void Update() {
+        UpdateRaycastOrigins();
         //camPos = new Vector3(playerRB.position.x, playerRB.position.y, -10);
         //newCamPos = new Vector2(cameraOffSet, 0);
         if (Input.GetButtonDown("Jump") && grounded) {
@@ -129,6 +260,7 @@ public class PlayerController : MonoBehaviour {
     }
 
     void FixedUpdate() {
+        GroundCollision();
         var horizontalInput = Vector2.right * Input.GetAxis("Horizontal");
         var newVelocity = playerRB.velocity + horizontalInput * horizontalAccel * Time.deltaTime;
         newVelocity.x = Mathf.Clamp(newVelocity.x, -horizontalMaxSpeed, horizontalMaxSpeed);
@@ -152,7 +284,7 @@ public class PlayerController : MonoBehaviour {
             playerRB.velocity = newVelocity + new Vector2(0, grounded ? 0 : -gravity * Time.deltaTime); // Uusi Vector2 lisää custom gravityn velocity.y kohtaan.
                                                                                                         // Jos maassa, antaa arvon nolla, muuten miinustaa custom gravityn y akseliin.
         }
-
+       
 
         //Camera manipulation ei toiminut hyvin
         //if(horizontalInput.x > 0) {
