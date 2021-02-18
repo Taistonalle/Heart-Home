@@ -143,8 +143,17 @@ public class PlayerController : MonoBehaviour {
         else {
             Debug.DrawRay(rayOrigin4, Vector2.down * rayLenght, Color.white);
         }
+        // Y pos fix, mikä ei toiminu oikein hyvin ollenkaan alkuun. Nyt jotenkin
+        if (grounded && ray1 && ray1.distance < 0.05f) {
+            playerRB.position = playerRB.position += new Vector2(0f, 0.03f);
+            Debug.Log("Ray1 Fixed player position");
+        }
+        else if (grounded && ray4 && ray4.distance < 0.05f) {
+            playerRB.position = playerRB.position += new Vector2(0f, 0.03f);
+            Debug.Log("Ray 4 Fixed player position");
+        }
 
-        if(!ray1 && !ray2 && !ray3 && !ray4) {
+        if (!ray1 && !ray2 && !ray3 && !ray4) {
             grounded = false;
         }
 
@@ -252,10 +261,14 @@ public class PlayerController : MonoBehaviour {
 
         if (grounded) {
             dashCount = 1;
+            gravity = 0f;
+        }
+        else if (!grounded) {
+            gravity = Input.GetButton("Jump") ? glideGravity : 9.81f;
         }
 
         dash = Input.GetKey(KeyCode.LeftShift) ? true : false;
-        gravity = Input.GetButton("Jump") ? glideGravity :  9.81f; 
+        //gravity = Input.GetButton("Jump") ? glideGravity :  9.81f; 
                                                                                      
     }
 
