@@ -267,7 +267,7 @@ public class PlayerController : MonoBehaviour {
             gravity = Input.GetButton("Jump") ? glideGravity : 9.81f;
         }
 
-        dash = Input.GetKey(KeyCode.LeftShift) ? true : false;
+        dash = Input.GetKey(KeyCode.LeftShift) || Input.GetButton("Fire1") ? true : false; //Fire1 nappi toimii ainakin PS4 ohjaimen "R1" nappina
         //gravity = Input.GetButton("Jump") ? glideGravity :  9.81f; 
                                                                                      
     }
