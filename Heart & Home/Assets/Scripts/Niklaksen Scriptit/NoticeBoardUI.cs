@@ -5,7 +5,8 @@ using UnityEngine;
 public class NoticeBoardUI : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
+    public RunPhaseUI run;
+    void OnEnable()
     {
         
     }
@@ -13,6 +14,9 @@ public class NoticeBoardUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Q)) {
+            run.runningUI = false;
+            print("Exiting noticeboardUI");
+        }
     }
 }

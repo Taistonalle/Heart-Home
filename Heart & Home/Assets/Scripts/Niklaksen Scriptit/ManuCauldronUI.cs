@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ManuCauldronUI : MonoBehaviour
 {
+    public RunPhaseUI run;
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +14,9 @@ public class ManuCauldronUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Q)) {
+            run.runningUI = false;
+            print("Exiting ManualCauldronUI");
+        }
     }
 }
