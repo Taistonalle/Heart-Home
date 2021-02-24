@@ -563,6 +563,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 271362004, guid: 0413fa95798e81a4c99b70a57b91bce8, type: 3}
+      propertyPath: recipes
+      value: 
+      objectReference: {fileID: 1587341406}
     - target: {fileID: 1674961121651069808, guid: 0413fa95798e81a4c99b70a57b91bce8, type: 3}
       propertyPath: m_Name
       value: Kitchen

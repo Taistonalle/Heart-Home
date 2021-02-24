@@ -6,6 +6,9 @@ public class AutoCauldronUI : MonoBehaviour
 {
     public RunPhaseUI run;
     // Start is called before the first frame update
+    public RecipeContainer recipes;
+
+
     void Start()
     {
         
@@ -18,5 +21,9 @@ public class AutoCauldronUI : MonoBehaviour
             run.runningUI = false;
             print("Exiting Automatic CauldronUI");
         }
+    }
+
+    void MakeRecipeButton(Recipes recipe) {
+ 
     }
 }

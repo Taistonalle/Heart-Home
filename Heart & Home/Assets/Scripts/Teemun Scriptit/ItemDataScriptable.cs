@@ -5,7 +5,7 @@ using UnityEngine;
 public class ItemDataScriptable : ScriptableObject {
     public ItemType item;
     public Sprite sprite;
-    
+
 
 
 }
