@@ -12,6 +12,11 @@ public class RunPhaseUI : MonoBehaviour
     public ManuCauldronUI manuCauldronUI;
     public NoticeBoardUI noticeBoardUI;
     public bool runningUI;
+    public GameObject fridge;
+    public GameObject exit;
+    public GameObject autoCauldron;
+    public GameObject manuCauldron;
+    public GameObject noticeBoard;
 
     void Awake() {
         ksp = FindObjectOfType<KitchenPhaseSystem>();
@@ -20,6 +25,8 @@ public class RunPhaseUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        EnableMenu();
+
         if (runningUI == false) {
             if (Input.GetKeyDown(KeyCode.E)) {
                 RunPhase(ksp.currentPhase);
@@ -48,5 +55,21 @@ public class RunPhaseUI : MonoBehaviour
             noticeBoardUI.enabled = true;
             print("Running noticeboard");
         } else Debug.Log("No Kitchenphase atm");
+    }
+
+    public void EnableMenu() {
+        if (runningUI == true) {
+            fridge.SetActive(false);
+            exit.SetActive(false);
+            autoCauldron.SetActive(false);
+            manuCauldron.gameObject.SetActive(false);
+            noticeBoard.SetActive(false);
+        } else {
+            fridge.SetActive(true);
+            exit.SetActive(true);
+            autoCauldron.SetActive(true);
+            manuCauldron.gameObject.SetActive(true);
+            noticeBoard.SetActive(true);
+        }
     }
 }
