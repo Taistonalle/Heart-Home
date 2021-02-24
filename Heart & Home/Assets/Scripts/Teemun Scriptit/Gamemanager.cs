@@ -7,6 +7,7 @@ public class Gamemanager : MonoBehaviour {
     LevelManager levelManager;
     KitchenManager kitchenManager;
     public GameObject Camera;
+    public ExitUI exitUI;
     void Start() {
         gameState = GameState.Menu;
         levelManager = FindObjectOfType<LevelManager>();
@@ -61,6 +62,9 @@ public class Gamemanager : MonoBehaviour {
         }
         else if (Input.GetKeyDown(KeyCode.P)) {
             StartState(GameState.Platforming);
+        } else if (exitUI.exiting == true) {
+            StartState(GameState.Platforming);
+            exitUI.exiting = false;
         }
     }
 }
