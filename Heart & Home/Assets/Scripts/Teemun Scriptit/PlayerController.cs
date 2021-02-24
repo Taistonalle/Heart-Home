@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerAttacks))]
 public class PlayerController : MonoBehaviour {
     const float skinWidth = 0.015f;
     //public int horizontalRayCount = 4; 
@@ -13,6 +14,8 @@ public class PlayerController : MonoBehaviour {
     public LayerMask collisionMask;
 
     Rigidbody2D playerRB;
+    Vector2 scaleChange;
+    PlayerAttacks playerAttacks;
     [Range(0.1f, 10f)] public float jumpForce = 2f;
     [Range(10, 100f)] public float dashForce = 10f;
     [Range(1f, 5f)] public float dashCD = 2f;
@@ -244,15 +247,34 @@ public class PlayerController : MonoBehaviour {
         //}
     }
 
+    void ScaleChanger() {
+        var horiInput = Vector2.right * Input.GetAxis("Horizontal");
+
+        if(horiInput.x > 0) {
+            scaleChange = new Vector2(1f, 1f);
+            playerAttacks.facingRight = true;
+            playerAttacks.facingLeft = false;
+        }
+        else if(horiInput.x < 0) {
+            scaleChange = new Vector2(-1f, 1f);
+            playerAttacks.facingLeft = true;
+            playerAttacks.facingRight = false;
+        }
+    }
+
     void Start() {
+        playerAttacks = GetComponent<PlayerAttacks>();
         playerRB = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
         CalculateRaySpacing();
         glideGravity = gravity / 3;
+        scaleChange = transform.localScale;
     }
 
     void Update() {
         UpdateRaycastOrigins();
+        ScaleChanger();
+        transform.localScale = scaleChange;
         //camPos = new Vector3(playerRB.position.x, playerRB.position.y, -10);
         //newCamPos = new Vector2(cameraOffSet, 0);
         if (Input.GetButtonDown("Jump") && grounded) {
@@ -268,8 +290,12 @@ public class PlayerController : MonoBehaviour {
         }
 
         dash = Input.GetKey(KeyCode.LeftShift) || Input.GetButton("Fire1") ? true : false; //Fire1 nappi toimii ainakin PS4 ohjaimen "R1" nappina
-        //gravity = Input.GetButton("Jump") ? glideGravity :  9.81f; 
-                                                                                     
+                                                                                           //gravity = Input.GetButton("Jump") ? glideGravity :  9.81f; 
+
+        if (Input.GetKeyDown(KeyCode.V)) { //PlaceHolder nappi hyökkäykselle
+            playerAttacks.LightAttack();
+        }
+
     }
 
     void FixedUpdate() {
