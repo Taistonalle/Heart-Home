@@ -292,8 +292,15 @@ public class PlayerController : MonoBehaviour {
         dash = Input.GetKey(KeyCode.LeftShift) || Input.GetButton("Fire1") ? true : false; //Fire1 nappi toimii ainakin PS4 ohjaimen "R1" nappina
                                                                                            //gravity = Input.GetButton("Jump") ? glideGravity :  9.81f; 
 
-        if (Input.GetKeyDown(KeyCode.V)) { //PlaceHolder nappi hyökkäykselle
+        if (Input.GetKeyDown(KeyCode.V)) { //PlaceHolder napit hyökkäyksille
             playerAttacks.LightAttack();
+        }
+        else if (Input.GetKey(KeyCode.B)) {
+            playerAttacks.heavyAttackForce += Time.deltaTime;
+        }
+        else if (Input.GetKeyUp(KeyCode.B)) {
+            playerAttacks.HeavyAttack();
+            playerAttacks.heavyAttackForce = 5f;
         }
 
     }
