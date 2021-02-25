@@ -3,23 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 public enum GameState { Menu, Pause, Platforming, Kitchen };
 public class Gamemanager : MonoBehaviour {
-    [SerializeField] GameState gameState;
+    public GameState gameState { get; private set; }
     LevelManager levelManager;
     KitchenManager kitchenManager;
     public GameObject Camera;
     public ExitUI exitUI;
+    SaveLoadManager saveLoad;
     void Start() {
         gameState = GameState.Menu;
         levelManager = FindObjectOfType<LevelManager>();
         kitchenManager = FindObjectOfType<KitchenManager>();
+        saveLoad = FindObjectOfType<SaveLoadManager>();
     }
 
     void GoToKitchen() {
         kitchenManager.EnterKitchen();
+        saveLoad.Save();
     }
 
-    void GoToPlatforming() {
-        levelManager.LoadLevel("Level1", "Start");
+    void GoToPlatforming(bool fromLoad = false) {
+        if (fromLoad) {
+            string loadID;
+            string loadWaypoint;
+            saveLoad.GetCurrentLvlAndWaypoint(out loadID, out loadWaypoint);
+            levelManager.LoadLevel(loadID, loadWaypoint);
+        } else {
+            levelManager.LoadLevel("Level1", "Start");
+        }
         Camera.GetComponent<PlayerFollower>().followingPlayer = true;
     }
 
@@ -33,8 +43,8 @@ public class Gamemanager : MonoBehaviour {
         Camera.transform.position = Camera.GetComponent<PlayerFollower>().startingPosition;
     }
 
-    void StartState(GameState newState) {
-        if (gameState == newState) {
+    public void StartState(GameState newState, bool fromLoad = false) {
+        if (gameState == newState && !fromLoad) {
             Debug.LogWarning("Same level already!");
             return;
         }
@@ -51,7 +61,7 @@ public class Gamemanager : MonoBehaviour {
             GoToKitchen();
         }
         else if (gameState == GameState.Platforming) {
-            GoToPlatforming();
+            GoToPlatforming(fromLoad);
         }
 
     }

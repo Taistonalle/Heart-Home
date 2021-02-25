@@ -13,8 +13,12 @@ public class LevelManager : MonoBehaviour {
     public List<LevelData> levels;
     public GameObject player;
     GameObject currentLevel = null;
-    void Start() {
+    public string currentWaypoint { get; private set; }
+    public string currentLevelID { get; private set; }
 
+    SaveLoadManager saveLoad;
+    void Start() {
+        saveLoad = FindObjectOfType<SaveLoadManager>();
     }
 
     void Update() {
@@ -63,6 +67,9 @@ public class LevelManager : MonoBehaviour {
         if (waypoint == null) {
             Debug.LogError("Spawnpoint missing!" + spawnpointID);
         }
+        currentWaypoint = spawnpointID;
+        currentLevelID = levelID;
+        saveLoad.Save();
         player.transform.position = waypoint.transform.position;
     }
 }

@@ -31,6 +31,7 @@ public class InventoryUI : MonoBehaviour
 
     void UpdateUI() {
         Debug.Log("Updating inventory");
+
         for (int i = 0; i < slots.Length; i++) {
             if (i < inv.kitchenInv.items.Count) {
                 slots[i].AddItem(inv.kitchenInv.items[i]);
