@@ -24,6 +24,9 @@ public class AutoCauldronUI : MonoBehaviour
     }
 
     void MakeRecipeButton(Recipes recipe) {
- 
+        ItemType main = recipe.mainIngridient;
+        ItemType second = recipe.neededIngredient;
+        float cookTime = recipe.cookkingTime;
+        Effect effect = recipe.effect;
     }
 }

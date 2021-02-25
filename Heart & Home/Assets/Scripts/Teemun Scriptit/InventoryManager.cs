@@ -12,22 +12,27 @@ public class InventoryManager : MonoBehaviour {
     public Inventory kitchenInvIngredients = new Inventory();
     public Inventory kitchenInvFood = new Inventory();
 
+    SaveLoadManager saveLoad;
 
-    void Start() {
+    Dictionary<string, ItemDataScriptable> itemTypes = new Dictionary<string, ItemDataScriptable>();
 
+
+    void Awake() {
+        LoadItemTypes();
+        saveLoad = FindObjectOfType <SaveLoadManager>();
     }
 
     void Update() {
-        //if (Input.GetKeyDown(KeyCode.I)) {
-        //    var s = "";
-        //    foreach(var item in kitchenInv.items) {
-        //        //Enum.GetName(typeof(ItemType), item.kind)); 
-            
-        //    s += item.kind + " ";
-        //    }
+        if (Input.GetKeyDown(KeyCode.I)) {
+            var s = "";
+            foreach (var item in kitchenInv.items) {
+                //Enum.GetName(typeof(ItemType), item.kind)); 
 
-        //    print(s);
-        //}
+                s += item.kind + " ";
+            }
+
+            print(s);
+        }
     }
 
     public void AddItem(ItemDataScriptable item) {
@@ -42,6 +47,33 @@ public class InventoryManager : MonoBehaviour {
         kitchenInv.items.Remove(new ItemData(item));
         if (onItemChangeCallback != null) {
             onItemChangeCallback.Invoke();
+        }
+    }
+    public void Save() {
+        for(int i = 0; i < kitchenInv.items.Count; i++) {
+            var name = kitchenInv.items[i].kind.ToString();
+            var key = "kitcheninv" + i;
+            saveLoad.SetString(key, name);
+        }
+    }
+
+    public void Load() {
+        int i = 0;
+        kitchenInv.items.Clear();
+        while (true) {
+            var id = "kitcheninv" + i;
+            if (!saveLoad.ContainsString(id)) break;
+            var name = saveLoad.GetString(id);
+            AddItem(itemTypes[name]);
+            i++;
+        }
+    }
+
+    void LoadItemTypes() {
+        var items = Resources.LoadAll<ItemDataScriptable>("Items");
+        foreach (var item in items) {
+            //print(item.item.ToString());
+            itemTypes.Add(item.item.ToString(), item);
         }
     }
 }
