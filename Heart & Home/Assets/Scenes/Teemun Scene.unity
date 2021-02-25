@@ -204,7 +204,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 219742740}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -21.699358, y: -2.9380171, z: -10}
+  m_LocalPosition: {x: -21.701147, y: -2.9380171, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -924,7 +924,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1228036955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -985,6 +985,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameState: 0
   Camera: {fileID: 219742740}
+  exitUI: {fileID: 0}
 --- !u!114 &1228036959
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1057,7 +1058,7 @@ MonoBehaviour:
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
   m_SoftZoneWidth: 0.8
-  m_SoftZoneHeight: 0.8
+  m_SoftZoneHeight: 1.21
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
@@ -1387,7 +1388,7 @@ MonoBehaviour:
     m_Bits: 256
   facingLeft: 0
   facingRight: 1
-  rayLenght: 1
+  attackRange: 1
   LightAttackForce: 2
 --- !u!1 &1879121340
 GameObject:
