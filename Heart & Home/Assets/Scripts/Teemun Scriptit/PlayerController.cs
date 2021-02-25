@@ -33,6 +33,10 @@ public class PlayerController : MonoBehaviour {
     bool jump;
     float deadzone = 0.1f;
 
+    //Animaatioiden hallintaskripti ja animoitava objekti - Roopen lis‰‰m‰ 25.02
+    public GameObject animoitava;
+    AnimationManager animaattori;
+
     //Camera stuff
     //[Range(0f, 3f)]float cameraOffSet;
     //Vector3 camPos;
@@ -269,6 +273,9 @@ public class PlayerController : MonoBehaviour {
         CalculateRaySpacing();
         glideGravity = gravity / 3;
         scaleChange = transform.localScale;
+
+        //K‰ynnist‰‰ objektin AnimationManagerin
+        animaattori = animoitava.GetComponent<AnimationManager>();
     }
 
     void Update() {
@@ -327,10 +334,19 @@ public class PlayerController : MonoBehaviour {
         }
 
         if (canMoveNormally) {
-            playerRB.velocity = newVelocity + new Vector2(0, grounded ? 0 : -gravity * Time.deltaTime); // Uusi Vector2 lis‰‰ custom gravityn velocity.y kohtaan.
-                                                                                                        // Jos maassa, antaa arvon nolla, muuten miinustaa custom gravityn y akseliin.
+            playerRB.velocity = newVelocity + new Vector2(0, grounded ? 0 : -gravity * Time.deltaTime); // Uusi Vector2 lis‰‰ custom gravityn velocity.y kohtaan.                                                                                       // Jos maassa, antaa arvon nolla, muuten miinustaa custom gravityn y akseliin.
         }
-       
+
+
+        //Animaatiosteittien s‰‰tˆ
+
+
+        if(Input.GetAxisRaw("Horizontal") != 0 && grounded) {
+            animaattori.StateChange(SilkieStates.RUN);
+        }
+        else{
+            animaattori.StateChange(SilkieStates.IDLE);
+        }
 
         //Camera manipulation ei toiminut hyvin
         //if(horizontalInput.x > 0) {
