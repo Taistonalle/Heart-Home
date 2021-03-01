@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour {
     public bool dash;
     public bool canMoveNormally = true;
     public bool canDash = true;
+    public bool facingRight = true, facingLeft;
     bool jump;
     float deadzone = 0.1f;
 
@@ -256,13 +257,13 @@ public class PlayerController : MonoBehaviour {
 
         if(horiInput.x > 0) {
             scaleChange = new Vector2(1f, 1f);
-            playerAttacks.facingRight = true;
-            playerAttacks.facingLeft = false;
+            facingRight = true;
+            facingLeft = false;
         }
         else if(horiInput.x < 0) {
             scaleChange = new Vector2(-1f, 1f);
-            playerAttacks.facingLeft = true;
-            playerAttacks.facingRight = false;
+            facingLeft = true;
+            facingRight = false;
         }
     }
 

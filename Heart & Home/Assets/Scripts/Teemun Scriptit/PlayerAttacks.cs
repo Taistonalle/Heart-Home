@@ -4,22 +4,28 @@ using UnityEngine;
 
 public class PlayerAttacks : MonoBehaviour {
     GameObject player;
+    PlayerController pController;
+    MonsterManager mManager;
     Vector2 midPoint;
     RaycastHit2D midRay;
     public LayerMask collisionMask;
-    public bool facingLeft, facingRight = true;
     [Range(0.5f, 3f)] public float attackRange = 1f;
     [Range(1f, 5f)] public float lightAttackForce = 1f;
+    [Range(10, 20)] public int lightAttackDMG = 10;
     [Range(5f, 10f)] public float heavyAttackForce = 5f;
+    [Range(30, 50)] public int heavyAttackDMG = 30;
 
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
+        pController = player.GetComponent<PlayerController>();
         midRay = Physics2D.Raycast(midPoint, Vector2.right, attackRange, collisionMask);
     }
 
     void Update() {
         midPoint = new Vector2(player.transform.position.x, player.transform.position.y);
         heavyAttackForce = Mathf.Clamp(heavyAttackForce, 5f, 10f);
+        lightAttackDMG = Mathf.Clamp(lightAttackDMG, 10, 20);
+        heavyAttackDMG = Mathf.Clamp(lightAttackDMG, 30, 50);
     }
 
     void FixedUpdate() {
@@ -27,22 +33,21 @@ public class PlayerAttacks : MonoBehaviour {
     }
 
     void RayFromMiddle() {
-        //var midPoint = new Vector2(player.transform.position.x, player.transform.position.y);
-        if (facingRight) {
+        if (pController.facingRight) {
             midRay = Physics2D.Raycast(midPoint, Vector2.right, attackRange, collisionMask);
         }
-        else if (facingLeft) {
+        else if (pController.facingLeft) {
             midRay = Physics2D.Raycast(midPoint, Vector2.left, attackRange, collisionMask);
         }
 
-        if (midRay && facingRight) {
+        if (midRay && pController.facingRight) {
             Debug.DrawRay(midPoint, Vector2.right * attackRange, Color.red);
         }
         else {
             Debug.DrawRay(midPoint, Vector2.right * attackRange, Color.white);
         }
 
-        if (midRay && facingLeft) {
+        if (midRay && pController.facingLeft) {
             Debug.DrawRay(midPoint, Vector2.left * attackRange, Color.red);
         }
         else {
@@ -50,24 +55,34 @@ public class PlayerAttacks : MonoBehaviour {
         }
     }
 
+    void MManagerAndLightDMG() {
+        mManager = midRay.rigidbody.GetComponent<MonsterManager>();
+        mManager.Damage(lightAttackDMG);
+    }
+    void MManagerAndHeavyDMG() {
+        mManager = midRay.rigidbody.GetComponent<MonsterManager>();
+        mManager.Damage(heavyAttackDMG);
+    }
     public void LightAttack() {
         var upRight = new Vector2 (1f,1f);
         var upLeft = new Vector2(-1f,1f);
 
-        if (midRay.rigidbody && facingRight) {
+        if (midRay.rigidbody && pController.facingRight) {
             //Play attack animation here
+            MManagerAndLightDMG();
             midRay.rigidbody.AddForce(upRight * lightAttackForce, ForceMode2D.Impulse);
         }
-        else if(!midRay.rigidbody && facingRight) {
+        else if(!midRay.rigidbody && pController.facingRight) {
             //Play attack animation
             Debug.LogWarning("No target in range(right)");
         }
 
-        if (midRay.rigidbody && facingLeft) {
+        if (midRay.rigidbody && pController.facingLeft) {
             //Play attack animation here
+            MManagerAndLightDMG();
             midRay.rigidbody.AddForce(upLeft * lightAttackForce, ForceMode2D.Impulse);
         }
-        else if(!midRay.rigidbody && facingLeft) {
+        else if(!midRay.rigidbody && pController.facingLeft) {
             //Play attack animation
             Debug.LogWarning("No target in range(left)");
         }
@@ -77,20 +92,22 @@ public class PlayerAttacks : MonoBehaviour {
         var upRight = new Vector2(1f, 1f);
         var upLeft = new Vector2(-1f, 1f);
 
-        if (midRay.rigidbody && facingRight) {
+        if (midRay.rigidbody && pController.facingRight) {
             //Play attack animation here
+            MManagerAndHeavyDMG();
             midRay.rigidbody.AddForce(upRight * heavyAttackForce, ForceMode2D.Impulse);
         }
-        else if (!midRay.rigidbody && facingRight) {
+        else if (!midRay.rigidbody && pController.facingRight) {
             //Play attack animation
             Debug.LogWarning("No target in range(right)");
         }
 
-        if (midRay.rigidbody && facingLeft) {
+        if (midRay.rigidbody && pController.facingLeft) {
             //Play attack animation here
+            MManagerAndHeavyDMG();
             midRay.rigidbody.AddForce(upLeft * heavyAttackForce, ForceMode2D.Impulse);
         }
-        else if (!midRay.rigidbody && facingLeft) {
+        else if (!midRay.rigidbody && pController.facingLeft) {
             //Play attack animation
             Debug.LogWarning("No target in range(left)");
         }
