@@ -2,12 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AutoCauldronUI : MonoBehaviour
+public class RecipeVisualizer : MonoBehaviour
 {
-    public RunPhaseUI run;
     // Start is called before the first frame update
-
-
+    public List<GameObject> visualRecipes = new List<GameObject>();
     void Start()
     {
         
@@ -16,10 +14,6 @@ public class AutoCauldronUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q)) {
-            run.runningUI = false;
-            print("Exiting Automatic CauldronUI");
-        }
+        
     }
-    
 }

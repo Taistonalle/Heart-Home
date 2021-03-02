@@ -12,5 +12,6 @@ public class Recipes : ScriptableObject
     public ItemType mainIngridient;
     public ItemType neededIngredient;
     public float cookkingTime;
+    public Sprite sprite;
 
 }
