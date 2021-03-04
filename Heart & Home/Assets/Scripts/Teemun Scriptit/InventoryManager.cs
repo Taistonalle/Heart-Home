@@ -35,6 +35,37 @@ public class InventoryManager : MonoBehaviour {
         }
     }
 
+    public void AddItemInInventory(Inventory inv, ItemDataScriptable item) {
+        if (inv == kitchenInvIngredients) {
+            kitchenInvIngredients.items.Add(new ItemData(item));
+        } else if (inv == kitchenInvFood) {
+            kitchenInvFood.items.Add(new ItemData(item));
+        } else if (inv == personalInvFood) {
+            personalInvFood.items.Add(new ItemData(item));
+        } else if (inv == personalInvIngredients) {
+            personalInvIngredients.items.Add(new ItemData(item));
+        }
+
+        if (onItemChangeCallback != null) {
+            onItemChangeCallback.Invoke();
+        }
+    }
+
+    public void RemovItemInInventory(Inventory inv, ItemDataScriptable item) {
+        if (inv == kitchenInvIngredients) {
+            kitchenInvIngredients.items.Remove(new ItemData(item));
+        } else if (inv == kitchenInvFood) {
+            kitchenInvFood.items.Remove(new ItemData(item));
+        } else if (inv == personalInvFood) {
+            personalInvFood.items.Remove(new ItemData(item));
+        } else if (inv == personalInvIngredients) {
+            personalInvIngredients.items.Remove(new ItemData(item));
+        }
+
+        if (onItemChangeCallback != null) {
+            onItemChangeCallback.Invoke();
+        }
+    }
     public void AddItem(ItemDataScriptable item) {
         kitchenInv.items.Add(new ItemData(item));
         print(item.sprite);
@@ -56,6 +87,8 @@ public class InventoryManager : MonoBehaviour {
             saveLoad.SetString(key, name);
         }
     }
+
+    
 
     public void Load() {
         int i = 0;
