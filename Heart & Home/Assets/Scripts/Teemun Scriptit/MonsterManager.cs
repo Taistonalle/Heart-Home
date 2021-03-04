@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum MonsterStates { Patrol, Chase, Searching, Attacking, Return };
+
 public class MonsterManager : MonoBehaviour {
-    public Color flashColor;
-    public Color defaultColor;
-    SpriteRenderer sR;
-    [Range(0.1f, 0.5f)] public float flashTime = 0.2f;
+    public MonsterStates monsterState;
+    TintControl tintControl;
     [Range(0, 100)] public int healthPoints = 100;
 
     void Start() {
-        sR = GetComponent<SpriteRenderer>();
-        sR.color = defaultColor;
+        tintControl = GetComponentInChildren<TintControl>();
     }
 
     void Update() {
@@ -23,16 +22,15 @@ public class MonsterManager : MonoBehaviour {
     }
 
     void ResetMaterial() {
-        sR.color = defaultColor;
     }
 
     public void Damage(int d) {
         healthPoints -= d;
-        sR.color = flashColor;
-        Invoke("ResetMaterial", flashTime);
+        tintControl.Damage();
     }
     void Death() {
         Destroy(gameObject);
         print("Monster defeated!");
     }
+
 }
