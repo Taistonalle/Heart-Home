@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour {
     RaycastOrigins raycastOrigins;
     public LayerMask collisionMask;
 
-    Rigidbody2D playerRB;
+    public Rigidbody2D playerRB;
     Vector2 scaleChange;
     PlayerAttacks playerAttacks;
     [Range(0.1f, 10f)] public float jumpForce = 2f;
@@ -171,7 +171,7 @@ public class PlayerController : MonoBehaviour {
         public Vector2 topLeft, topRight, bottomLeft, bottomRight;
     }
 
-    IEnumerator walkTimer() {
+    public IEnumerator walkTimer() {
         canMoveNormally = false;
         yield return new WaitForSeconds(0.3f);
         canMoveNormally = true;

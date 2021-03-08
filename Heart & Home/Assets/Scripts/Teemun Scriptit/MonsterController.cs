@@ -8,9 +8,13 @@ public class MonsterController : MonoBehaviour {
     MonsterManager mManager;
     [Range(0.2f, 2f)] public float monsterSpeed = 1f;
     [Range(5f, 20f)] public float detectRadius = 5f;
-    public Vector2 returnPoint, mPos;
-    RaycastHit2D circleHit;
-    RaycastHit2D circleHitB;
+    public float patrolIdleTime = 2f;
+    public bool chaseEnabled, attackEnabled, searchEnabled;
+    float iddleCD, chaseSpeed, normalSpeed;
+    bool movingLeft = true, canIdle = true;
+    Vector2 returnPoint, monsterPos, patrolPoint1, patrolPoint2;
+    public GameObject[] patrolPoints;
+    RaycastHit2D circleHit, circleHitB;
     GameObject player;
     Rigidbody2D mRb;
 
@@ -18,29 +22,45 @@ public class MonsterController : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player");
         mManager = GetComponent<MonsterManager>();
         mRb = GetComponent<Rigidbody2D>();
+        iddleCD = patrolIdleTime * 2;
+        normalSpeed = monsterSpeed;
+        chaseSpeed = monsterSpeed * 1.2f;
+        monsterPos = gameObject.transform.position;
+        returnPoint = monsterPos;
+        patrolPoint1 = patrolPoints[0].transform.position;
+        patrolPoint2 = patrolPoints[1].transform.position;
     }
 
     void Update() {
-        mPos = gameObject.transform.position;
+        monsterPos = gameObject.transform.position;
     }
     void FixedUpdate() {
         circleHit = Physics2D.CircleCast(gameObject.transform.position, detectRadius, Vector2.right, 0f, detectLayer);
-        circleHitB = Physics2D.CircleCast(gameObject.transform.position, detectRadius / 2, Vector2.right, 0f, detectLayer);
+        circleHitB = Physics2D.CircleCast(gameObject.transform.position, detectRadius / 3, Vector2.right, 0f, detectLayer);
         StateUpdater();
 
-        if(mManager.monsterState == MonsterStates.Chase) {
-            Chase();
-        }
+        if (mManager.monsterState == MonsterStates.Patrol) Patrol();
+        else if (mManager.monsterState == MonsterStates.Idle) Idle();
+        else if (mManager.monsterState == MonsterStates.Chase) Chase();
+        else if (mManager.monsterState == MonsterStates.Attacking) Attacking();
+        else if (mManager.monsterState == MonsterStates.Searching) Searching();
+        else if (mManager.monsterState == MonsterStates.Return) Return();
     }
 
     void StateUpdater() {
-        if (circleHit && mManager.monsterState == MonsterStates.Patrol) { //Player enters detecting circle
+        if (circleHit && mManager.monsterState == MonsterStates.Patrol && chaseEnabled) { //Player enters detecting circle
             mManager.monsterState = MonsterStates.Chase;
         }
-        else if (!circleHit && mManager.monsterState == MonsterStates.Chase) { //Player leaves detection cirle
+        else if (circleHit && mManager.monsterState == MonsterStates.Idle && chaseEnabled) { //Player enters detecting circle while in idle state and chase is enabled
+            mManager.monsterState = MonsterStates.Chase;
+        }
+        else if (!circleHit && mManager.monsterState == MonsterStates.Chase && searchEnabled) { //Player leaves detection cirle with search enabled
             mManager.monsterState = MonsterStates.Searching;
         }
-        else if(circleHitB) { //Player enters attacking range
+        else if (!circleHit && mManager.monsterState == MonsterStates.Chase && chaseEnabled) { //Player leaves detection cirle while chase is enabled
+            mManager.monsterState = MonsterStates.Patrol;
+        }
+        else if(circleHitB && attackEnabled) { //Player enters attacking range
             mManager.monsterState = MonsterStates.Attacking;
         }
         else if(!circleHitB && mManager.monsterState == MonsterStates.Attacking) { // Player leaves attacking range
@@ -52,16 +72,51 @@ public class MonsterController : MonoBehaviour {
         else if(circleHit && mManager.monsterState == MonsterStates.Return) { //Player enters detection while returning to return point
             mManager.monsterState = MonsterStates.Chase;
         }
-        else if (mPos == returnPoint && mManager.monsterState == MonsterStates.Return) {//Monster has returned to his point
+        else if (monsterPos == returnPoint && mManager.monsterState == MonsterStates.Return) {//Monster has returned to his point
             mManager.monsterState = MonsterStates.Patrol;
         }
     }
 
-    public void Patrol() {
+    IEnumerator PatrolWaitTime() {
+        mManager.monsterState = MonsterStates.Idle;
+        yield return new WaitForSeconds(patrolIdleTime);
+        mManager.monsterState = MonsterStates.Patrol;
+    }
+    IEnumerator IdleCooldown() {
+        canIdle = false;
+        yield return new WaitForSeconds(iddleCD);
+        canIdle = true;
+    }
 
+    public void Patrol() {
+        monsterSpeed = normalSpeed;
+        var mRbXPos = mRb.position.x;
+        mRbXPos = Mathf.Clamp(mRbXPos, patrolPoint1.x, patrolPoint2.x);
+
+        if (movingLeft) {
+            mRb.position = mRb.position += Vector2.left * monsterSpeed * Time.deltaTime;
+        }
+        else if (!movingLeft) {
+            mRb.position = mRb.position + Vector2.right * monsterSpeed * Time.deltaTime;  
+        }
+
+        if (mRbXPos <= patrolPoint1.x && canIdle) {
+            movingLeft = false;
+            StartCoroutine(PatrolWaitTime());
+            StartCoroutine(IdleCooldown());
+        }
+        else if (mRbXPos >= patrolPoint2.x && canIdle) {
+            movingLeft = true;
+            StartCoroutine(PatrolWaitTime());
+            StartCoroutine(IdleCooldown());
+        }
+    }
+    void Idle() {
+        //Placeholder funktio jos tahtoo jotain erikoita idleen. Esim oma animaatio.
     }
 
     public void Chase() {
+        monsterSpeed = chaseSpeed;
         mRb.position = Vector2.Lerp(mRb.position, player.transform.position, monsterSpeed * Time.deltaTime); //Placeholder tapa jahtaamiselle
     }
 
@@ -92,7 +147,7 @@ public class MonsterController : MonoBehaviour {
         }
         else if(mManager.monsterState == MonsterStates.Attacking) {
             Gizmos.color = Color.magenta;
-            Gizmos.DrawWireSphere(gameObject.transform.position, detectRadius / 2);
+            Gizmos.DrawWireSphere(gameObject.transform.position, detectRadius / 3);
         }
         else {
             Gizmos.color = Color.white;
