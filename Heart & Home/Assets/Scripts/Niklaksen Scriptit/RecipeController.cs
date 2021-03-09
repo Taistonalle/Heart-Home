@@ -13,14 +13,14 @@ public class RecipeController : MonoBehaviour
     public List<GameObject> recipeButtons = new List<GameObject>();
     public GameObject scroller;
 
-    void Update() {
-        if (Input.GetKeyDown(KeyCode.O)) {
+
+    void OnEnable() {
+        if (recipeButtons.Count == 0) {
             for (int i = 0; i < recContainer.recipes.Count; i++) {
                 CreateRecipeButton(recContainer.recipes[i]);
             }
         }
     }
-
 
     void CreateRecipeButton(Recipes recipe) {
         var mainIngredient = recipe.mainIngridient;
@@ -28,36 +28,28 @@ public class RecipeController : MonoBehaviour
         var cookTime = recipe.cookkingTime;
         var effect = recipe.effect;
         Sprite dishIcon = recipe.sprite;
-        Sprite mainImage = null;
-        Sprite secImage = null;
-
         
-        GetCorrectItems(mainIngredient, mainImage);
-        GetCorrectItems(secIngredient, secImage);
-
         var newButton = Instantiate(recipeButton);
         newButton.transform.parent = scroller.transform;
         var newButtonScript = newButton.GetComponent<RecipeButtonScript>();
-        newButtonScript.newDishImage = dishIcon;
-        newButtonScript.newMainImage = mainImage;
-        newButtonScript.newSecondImage = secImage;
-        newButtonScript.cookTime = cookTime;
-        newButtonScript.recipeEffect = effect;
-        newButtonScript.newRecipeName = recipe.ToString();
-        
-        newButtonScript.CreateButton();
-        recipeButtons.Add(newButton);
 
-
-    }
-
-    void GetCorrectItems(ItemType item, Sprite sprite) {
         for (int i = 0; i < ingContainer.itemDatas.Count; i++) {
-            if (item != ingContainer.itemDatas[i].item) {
+            if (mainIngredient != ingContainer.itemDatas[i].item || secIngredient != ingContainer.itemDatas[i].item) {
                 continue;
-            } else {
-                sprite = ingContainer.itemDatas[i].sprite;
+            } else if (mainIngredient == ingContainer.itemDatas[i].item) {
+                newButtonScript.mainIngredient = ingContainer.itemDatas[i];
+                newButtonScript.mainImage.sprite = ingContainer.itemDatas[i].sprite;
+
+            } else if (secIngredient == ingContainer.itemDatas[i].item) {
+                newButtonScript.secondIngredient = ingContainer.itemDatas[i];
+                newButtonScript.secondImage.sprite = ingContainer.itemDatas[i].sprite;
             }
         }
+        print(mainIngredient + " " + secIngredient);
+        newButtonScript.dishImage.sprite = dishIcon;
+        newButtonScript.cookTime = cookTime;
+        newButtonScript.recipeEffect = effect;
+        newButtonScript.recipeName.text = recipe.ToString();
+        recipeButtons.Add(newButton);
     }
 }

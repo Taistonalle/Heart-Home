@@ -10,37 +10,43 @@ public class RecipeButtonScript : MonoBehaviour
     public Image mainImage;
     public Image secondImage;
     public Image dishImage;
-    public string newRecipeName;
-    public Sprite newMainImage;
-    public Sprite newSecondImage;
-    public Sprite newDishImage;
     public float cookTime;
     public Effect recipeEffect;
     public bool isHighlighted;
+    public ItemDataScriptable mainIngredient;
+    public ItemDataScriptable secondIngredient;
     InventoryManager inventoryManager;
+    bool hasMainIngredient;
+    bool hasSecondIngredient;
 
     private void Awake() {
         inventoryManager = FindObjectOfType<InventoryManager>();
     }
 
-    public void CreateButton() {
-
-        mainImage.sprite = newMainImage;
-        secondImage.sprite = newSecondImage;
-        dishImage.sprite = newDishImage;
-        print("created" + newRecipeName);
-    }
-
     void Update() {
         if (isHighlighted) {
             if (Input.GetKeyDown(KeyCode.E)) {
-                CookDish();
+                print("Checking for Ingredients");
+                CheckForIngredients();
+                if (hasMainIngredient && hasSecondIngredient) {
+                    CookDish();
+                } else print("Not enough ingredients");
             }
         }
     }
 
     void CookDish() {
         //inventoryManager.AddItemToDishInventory()
-        print("Cooked" + newRecipeName);
+        print("Cooked" + recipeName);
+    }
+
+    void CheckForIngredients() {
+        if (inventoryManager.kitchenInvIngredients.items.Contains(new ItemData(mainIngredient))){
+            hasMainIngredient = true;
+            print("has mainingredient");
+        } else if (inventoryManager.kitchenInvIngredients.items.Contains(new ItemData(secondIngredient))) {
+            hasSecondIngredient = true;
+            print("Has second ingredient");
+        }
     }
 }
