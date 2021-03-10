@@ -14,18 +14,23 @@ public class PlayerAttacks : MonoBehaviour {
     [Range(10, 20)] public int lightAttackDMG = 10;
     [Range(5f, 10f)] public float heavyAttackForce = 5f;
     [Range(30, 50)] public int heavyAttackDMG = 30;
-
+    [Range(0.1f, 1f)] public float heavyDMGBuildUpSpeed = 1f;
+    public int defaultHeavyDMG;
+    public float defaultHeavyAForce;
+    public bool canDmgBuildUp = true;
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
         pController = player.GetComponent<PlayerController>();
         midRay = Physics2D.Raycast(midPoint, Vector2.right, attackRange, collisionMask);
+        defaultHeavyDMG = heavyAttackDMG;
+        defaultHeavyAForce = heavyAttackForce;
     }
 
     void Update() {
         midPoint = new Vector2(player.transform.position.x, player.transform.position.y);
         heavyAttackForce = Mathf.Clamp(heavyAttackForce, 5f, 10f);
         lightAttackDMG = Mathf.Clamp(lightAttackDMG, 10, 20);
-        heavyAttackDMG = Mathf.Clamp(lightAttackDMG, 30, 50);
+        heavyAttackDMG = Mathf.Clamp(heavyAttackDMG, 30, 50);
     }
 
     void FixedUpdate() {
@@ -86,6 +91,14 @@ public class PlayerAttacks : MonoBehaviour {
             //Play attack animation
             Debug.LogWarning("No target in range(left)");
         }
+    }
+
+    public IEnumerator HeavyDMGBuildUp() {
+        heavyAttackDMG += 1;
+        heavyAttackForce += 0.2f;
+        canDmgBuildUp = false;
+        yield return new WaitForSeconds(heavyDMGBuildUpSpeed);
+        canDmgBuildUp = true;
     }
 
     public void HeavyAttack() {
