@@ -133,6 +133,7 @@ public class MonsterController : MonoBehaviour {
     }
 
     void OnDrawGizmos() {
+        if (!Application.isPlaying) return;
         if (mManager.monsterState == MonsterStates.Chase) {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(gameObject.transform.position, detectRadius);
