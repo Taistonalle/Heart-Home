@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour {
     public Rigidbody2D playerRB;
     Vector2 scaleChange;
     PlayerAttacks playerAttacks;
+    PlayerManager playerManager;
     [Range(0.1f, 10f)] public float jumpForce = 2f;
     [Range(10, 100f)] public float dashForce = 10f;
     [Range(1f, 5f)] public float dashCD = 2f;
@@ -278,11 +279,13 @@ public class PlayerController : MonoBehaviour {
 
     void Start() {
         playerAttacks = GetComponent<PlayerAttacks>();
+        playerManager = GetComponent<PlayerManager>();
         playerRB = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
         CalculateRaySpacing();
         glideGravity = gravity / 3;
         scaleChange = transform.localScale;
+        //playerManager.powerUps.Dash = true; //Placeholder testi, näkee vaan että managerin struct toimii
 
         animator = animPlayer.GetComponent<Animator>();
         ChangeAnimationState("Silkie_Idle");
@@ -318,12 +321,14 @@ public class PlayerController : MonoBehaviour {
                 playerAttacks.LightAttack();
             }
         }
-        else if (Input.GetKey(KeyCode.B)) {
-            playerAttacks.heavyAttackForce += Time.deltaTime;
+        else if (Input.GetKey(KeyCode.B) && playerAttacks.canDmgBuildUp) {
+            playerAttacks.StartCoroutine("HeavyDMGBuildUp");
+            //playerAttacks.heavyAttackForce += Time.deltaTime;
         }
         else if (Input.GetKeyUp(KeyCode.B)) {
             playerAttacks.HeavyAttack();
-            playerAttacks.heavyAttackForce = 5f;
+            playerAttacks.heavyAttackForce = playerAttacks.defaultHeavyAForce;
+            playerAttacks.heavyAttackDMG = playerAttacks.defaultHeavyDMG;
         }
         if (attackCooldownTimer > 0) {
             // attack still going, don't change animation

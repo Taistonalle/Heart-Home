@@ -34,13 +34,13 @@ public class RecipeController : MonoBehaviour
         var newButtonScript = newButton.GetComponent<RecipeButtonScript>();
 
         for (int i = 0; i < ingContainer.itemDatas.Count; i++) {
-            if (mainIngredient != ingContainer.itemDatas[i].item || secIngredient != ingContainer.itemDatas[i].item) {
-                continue;
-            } else if (mainIngredient == ingContainer.itemDatas[i].item) {
+            if (mainIngredient == ingContainer.itemDatas[i].item) {
                 newButtonScript.mainIngredient = ingContainer.itemDatas[i];
                 newButtonScript.mainImage.sprite = ingContainer.itemDatas[i].sprite;
 
-            } else if (secIngredient == ingContainer.itemDatas[i].item) {
+            }
+
+            if (secIngredient == ingContainer.itemDatas[i].item) {
                 newButtonScript.secondIngredient = ingContainer.itemDatas[i];
                 newButtonScript.secondImage.sprite = ingContainer.itemDatas[i].sprite;
             }

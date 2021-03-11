@@ -26,6 +26,10 @@ public class LevelManager : MonoBehaviour {
     }
 
     void UnloadCurrent() {
+        var savers = currentLevel.GetComponentsInChildren<ILevelLoad>();
+        foreach (var save in savers) {
+            save.OnLevelUnload();
+        }
         Destroy(currentLevel);
         currentLevel = null;
     }
@@ -54,6 +58,12 @@ public class LevelManager : MonoBehaviour {
 
         var level = Instantiate(prefab);
         currentLevel = level;
+
+        var loaders = currentLevel.GetComponentsInChildren<ILevelLoad>();
+        foreach (var load in loaders) {
+            load.OnLevelLoad();
+        }
+
         //Intialize level scripts
 
         var spawns = level.GetComponentsInChildren<PlayerSpawn>();

@@ -134,34 +134,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kitchen
       objectReference: {fileID: 0}
-    - target: {fileID: 6309881672654382235, guid: 0413fa95798e81a4c99b70a57b91bce8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6309881672654382235, guid: 0413fa95798e81a4c99b70a57b91bce8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6309881672654382235, guid: 0413fa95798e81a4c99b70a57b91bce8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 646155512}
-    - target: {fileID: 6309881672654382235, guid: 0413fa95798e81a4c99b70a57b91bce8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6309881672654382235, guid: 0413fa95798e81a4c99b70a57b91bce8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SendMessage
-      objectReference: {fileID: 0}
-    - target: {fileID: 6309881672654382235, guid: 0413fa95798e81a4c99b70a57b91bce8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: UnityEngine.Component, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 6309881672654382235, guid: 0413fa95798e81a4c99b70a57b91bce8, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 7259513765048427874, guid: 0413fa95798e81a4c99b70a57b91bce8, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -217,17 +189,6 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d8e6882049616e64bb14aa784ca50b1a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &646155512 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3960944560692878954, guid: 0413fa95798e81a4c99b70a57b91bce8, type: 3}
-  m_PrefabInstance: {fileID: 277632285}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ccce357e886759b4e8ecc8bdbf359018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &822337702
