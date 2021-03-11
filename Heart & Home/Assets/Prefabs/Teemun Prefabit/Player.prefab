@@ -244,6 +244,7 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 128
+  playerRB: {fileID: 0}
   jumpForce: 8
   dashForce: 10
   dashCD: 2
@@ -259,7 +260,9 @@ MonoBehaviour:
   canDash: 1
   facingRight: 1
   facingLeft: 0
-  animoitava: {fileID: 5156879666677476534}
+  lightAttackCooldown: 1
+  heavyAttackCooldown: 1.5
+  animPlayer: {fileID: 0}
 --- !u!114 &5156879668434464258
 MonoBehaviour:
   m_ObjectHideFlags: 0

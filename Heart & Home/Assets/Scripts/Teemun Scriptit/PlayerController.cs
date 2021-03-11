@@ -4,6 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(PlayerAttacks))]
 public class PlayerController : MonoBehaviour {
+
     const float skinWidth = 0.015f;
     //public int horizontalRayCount = 4; 
     //public int verticalRayCount = 4;
@@ -34,9 +35,17 @@ public class PlayerController : MonoBehaviour {
     bool jump;
     float deadzone = 0.1f;
 
-    //Animaatioiden hallintaskripti ja animoitava objekti - Roopen lis‰‰m‰ 25.02
-    public GameObject animoitava;
-    AnimationManager animaattori;
+    float attackCooldownTimer = -1;
+    public float lightAttackCooldown = 1f;
+    public float heavyAttackCooldown = 1.5f;
+
+
+    //Poistin animaatiomanagerin viittauksen. Ainoastaan animoitava objekti liitet‰‰n skriptiin.
+    public GameObject animPlayer;
+    Animator animator;
+    string currentState;
+
+    //
 
     //Camera stuff
     //[Range(0f, 3f)]float cameraOffSet;
@@ -275,11 +284,13 @@ public class PlayerController : MonoBehaviour {
         glideGravity = gravity / 3;
         scaleChange = transform.localScale;
 
-        //K‰ynnist‰‰ objektin AnimationManagerin
-        animaattori = animoitava.GetComponent<AnimationManager>();
+        animator = animPlayer.GetComponent<Animator>();
+        ChangeAnimationState("Silkie_Idle");
+        
     }
 
     void Update() {
+        attackCooldownTimer -= Time.deltaTime;
         UpdateRaycastOrigins();
         ScaleChanger();
         transform.localScale = scaleChange;
@@ -301,7 +312,11 @@ public class PlayerController : MonoBehaviour {
                                                                                            //gravity = Input.GetButton("Jump") ? glideGravity :  9.81f; 
 
         if (Input.GetKeyDown(KeyCode.V)) { //PlaceHolder napit hyˆkk‰yksille
-            playerAttacks.LightAttack();
+            if (attackCooldownTimer < 0) {
+                attackCooldownTimer = lightAttackCooldown;
+                ChangeAnimationState("Silkie_Attack");
+                playerAttacks.LightAttack();
+            }
         }
         else if (Input.GetKey(KeyCode.B)) {
             playerAttacks.heavyAttackForce += Time.deltaTime;
@@ -309,6 +324,21 @@ public class PlayerController : MonoBehaviour {
         else if (Input.GetKeyUp(KeyCode.B)) {
             playerAttacks.HeavyAttack();
             playerAttacks.heavyAttackForce = 5f;
+        }
+        if (attackCooldownTimer > 0) {
+            // attack still going, don't change animation
+        }else if (!grounded) {
+            if (playerRB.velocity.y > 0) {
+                ChangeAnimationState("Silkie_Jump");
+            } else {
+                ChangeAnimationState("Silkie_Falling");
+            }
+
+        }
+        else if(Mathf.Abs(Input.GetAxis("Horizontal")) > 0.1f) {            
+            ChangeAnimationState("Silkie_Run");
+        } else {
+            ChangeAnimationState("Silkie_Idle");
         }
 
     }
@@ -318,12 +348,13 @@ public class PlayerController : MonoBehaviour {
         var horizontalInput = Vector2.right * Input.GetAxis("Horizontal");
         var newVelocity = playerRB.velocity + horizontalInput * horizontalAccel * Time.deltaTime;
         newVelocity.x = Mathf.Clamp(newVelocity.x, -horizontalMaxSpeed, horizontalMaxSpeed);
-
+        
+        if(Input.GetAxis("Horizontal") > 0 && grounded) {
+        }
         //Friction / kitka
         if(Mathf.Abs(horizontalInput.x) < deadzone) {
             newVelocity.x = Mathf.Lerp(newVelocity.x, 0, Time.deltaTime * (grounded ? groundFrictionWhenNoInput : airFrictionWhenNoInput));
         }
-
         if (jump) {
             newVelocity.y = jumpForce;
             jump = false;
@@ -338,16 +369,6 @@ public class PlayerController : MonoBehaviour {
             playerRB.velocity = newVelocity + new Vector2(0, grounded ? 0 : -gravity * Time.deltaTime); // Uusi Vector2 lis‰‰ custom gravityn velocity.y kohtaan.                                                                                       // Jos maassa, antaa arvon nolla, muuten miinustaa custom gravityn y akseliin.
         }
 
-
-        //Animaatiosteittien s‰‰tˆ
-
-
-        if(Input.GetAxisRaw("Horizontal") != 0 && grounded) {
-            animaattori.StateChange(SilkieStates.RUN);
-        }
-        else{
-            animaattori.StateChange(SilkieStates.IDLE);
-        }
 
         //Camera manipulation ei toiminut hyvin
         //if(horizontalInput.x > 0) {
@@ -373,6 +394,16 @@ public class PlayerController : MonoBehaviour {
         //    }
         //}
         //}
+        //M‰‰ritt‰‰ sen hetkisen animation staten.
+        //Pyˆritt‰‰ stateen liitetyn animaation.
+    }
 
+    private void ChangeAnimationState(string newState) {
+        if(currentState == newState) {
+            return;
+        }
+
+        animator.Play(newState);
+        currentState = newState;
     }
 }
