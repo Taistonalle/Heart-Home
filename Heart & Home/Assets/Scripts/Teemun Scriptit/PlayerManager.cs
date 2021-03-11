@@ -12,20 +12,29 @@ public class PlayerManager : MonoBehaviour {
     //public List<bool> enabledPowerUps = new List<bool>();
     //bool dash;
     [Range(0, 100)] public int healthPoints = 100;
+    HealthBar healthBar;
+    TintControl tintControl;
 
     void Start() {
+        healthBar = GetComponentInChildren<HealthBar>();
+        tintControl = GetComponentInChildren<TintControl>();
         //enabledPowerUps.Add(dash);
     }
     void Update() {
         healthPoints = Mathf.Clamp(healthPoints, 0, 100);
+        healthBar.SetHealth();
 
         if (healthPoints <= 0) {
             Death();
         }
+
+        //placeholder test
+        if (Input.GetKeyDown(KeyCode.M)) Damage(10);
     }
 
     public void Damage(int d) {
         healthPoints -= d;
+        tintControl.Damage();
     }
 
     void Death() {
