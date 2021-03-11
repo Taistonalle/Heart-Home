@@ -41,7 +41,8 @@ public class SaveLoadManager : MonoBehaviour
     }
 
     public void SetString(string key, string data) {
-        state.namedStrings.Add(key, data);
+        //state.namedStrings.Add(key, data); 
+        state.namedStrings[key] = data;
     }
     void Update() {
         if (Input.GetKeyDown(KeyCode.J)) {
