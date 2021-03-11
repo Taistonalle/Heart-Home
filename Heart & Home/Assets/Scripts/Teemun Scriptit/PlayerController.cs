@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour {
     public bool facingRight = true, facingLeft;
     bool jump;
     float deadzone = 0.1f;
+    public float fallSpeed;
 
     float attackCooldownTimer = -1;
     public float lightAttackCooldown = 1f;
@@ -333,7 +334,7 @@ public class PlayerController : MonoBehaviour {
         if (attackCooldownTimer > 0) {
             // attack still going, don't change animation
         }else if (!grounded) {
-            if (playerRB.velocity.y > 0) {
+            if (playerRB.velocity.y > -fallSpeed) {
                 ChangeAnimationState("Silkie_Jump");
             } else {
                 ChangeAnimationState("Silkie_Falling");
