@@ -27,6 +27,7 @@ public class RecipeButtonScript : MonoBehaviour
         if (isHighlighted) {
             if (Input.GetKeyDown(KeyCode.E)) {
                 print("Checking for Ingredients");
+                print(mainIngredient + " " + secondIngredient);
                 CheckForIngredients();
                 if (hasMainIngredient && hasSecondIngredient) {
                     CookDish();
@@ -41,10 +42,13 @@ public class RecipeButtonScript : MonoBehaviour
     }
 
     void CheckForIngredients() {
-        if (inventoryManager.kitchenInvIngredients.items.Contains(new ItemData(mainIngredient))){
+        var items = inventoryManager.kitchenInvIngredients.items;
+        if (items.Exists(x => x.kind == mainIngredient.item)){
             hasMainIngredient = true;
             print("has mainingredient");
-        } else if (inventoryManager.kitchenInvIngredients.items.Contains(new ItemData(secondIngredient))) {
+        }
+        
+        if (items.Exists(x => x.kind == secondIngredient.item)) {
             hasSecondIngredient = true;
             print("Has second ingredient");
         }
