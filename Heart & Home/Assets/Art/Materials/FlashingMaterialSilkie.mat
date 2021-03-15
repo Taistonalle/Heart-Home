@@ -141,7 +141,7 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-    - _TintAmount: 1.6654154e-16
+    - _TintAmount: 0.0000081419275
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:

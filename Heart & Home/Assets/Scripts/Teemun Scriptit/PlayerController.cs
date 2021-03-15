@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour {
     [Range(1f, 5f)] public float dashCD = 2f;
     [Range(0.1f, 10f)] public float groundFrictionWhenNoInput = 2f;
     [Range(0.1f, 10f)] public float airFrictionWhenNoInput = 2f;
-    [Range(1f, 20f)] public float horizontalAccel = 1;
+    [Range(1f, 50f)] public float horizontalAccel = 1;
     [Range(1f, 30f)] public float horizontalMaxSpeed = 5;
     public int dashCount = 1;
     public float gravity = 9.81f;

@@ -352,7 +352,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelID: Level1
-  spawnID: Level2Cave
+  spawnID: FirstRight
 --- !u!61 &1156258879640654400
 BoxCollider2D:
   m_ObjectHideFlags: 0
