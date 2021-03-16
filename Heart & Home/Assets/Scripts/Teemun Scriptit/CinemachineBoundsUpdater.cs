@@ -4,7 +4,7 @@ using UnityEngine;
 using Cinemachine;
 
 public class CinemachineBoundsUpdater : MonoBehaviour {
-    public Collider2D boundsCollider;
+    Collider2D boundsCollider;
     CinemachineVirtualCamera cineCam;
     CinemachineConfiner cineBounds;
     void Start() {
