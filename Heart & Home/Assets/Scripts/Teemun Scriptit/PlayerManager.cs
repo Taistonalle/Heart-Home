@@ -17,12 +17,14 @@ public class PlayerManager : MonoBehaviour {
     SpriteRenderer sR;
     Color alpha;
     HealthBar healthBar;
+    PlayerSounds playerSounds;
     TintControl tintControl;
 
     void Start() {
         healthBar = GetComponentInChildren<HealthBar>();
         tintControl = GetComponentInChildren<TintControl>();
         sR = GetComponentInChildren<SpriteRenderer>();
+        playerSounds = GetComponent<PlayerSounds>();
         alpha = Color.white;
         //enabledPowerUps.Add(dash);
     }
@@ -57,6 +59,7 @@ public class PlayerManager : MonoBehaviour {
         canBeDamaged = false;
         healthPoints -= d;
         tintControl.Damage();
+        playerSounds.PlayerHitSound();
         StartCoroutine(FlashOnDMG());
     }
 
