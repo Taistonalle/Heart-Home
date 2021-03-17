@@ -10,10 +10,11 @@ public class Gamemanager : MonoBehaviour {
     public ExitUI exitUI;
     SaveLoadManager saveLoad;
     void Start() {
-        gameState = GameState.Menu;
+        gameState = GameState.Menu; 
         levelManager = FindObjectOfType<LevelManager>();
         kitchenManager = FindObjectOfType<KitchenManager>();
         saveLoad = FindObjectOfType<SaveLoadManager>();
+        StartState(GameState.Kitchen); //Teemun lisäys 17.2
     }
 
     void GoToKitchen() {

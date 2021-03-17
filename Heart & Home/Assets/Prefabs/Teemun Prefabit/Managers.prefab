@@ -52,6 +52,22 @@ MonoBehaviour:
     prefab: {fileID: 5542702677564880252, guid: 238c5970db919fc4fba610c8f30245df, type: 3}
   - id: Level2
     prefab: {fileID: 8710765726188075356, guid: 55b5a8207b0fe744a922428804dda704, type: 3}
+  - id: Level3
+    prefab: {fileID: 4293471247964186948, guid: d57ab78bf01e87b4e95cbc82b9298560, type: 3}
+  - id: Level4
+    prefab: {fileID: 1555433992645190975, guid: 75538515a79f21640ae51d005c2a531f, type: 3}
+  - id: Level5
+    prefab: {fileID: 5965636414227163091, guid: 06e257cedd08a7a40a2d876ac7b2f5fc, type: 3}
+  - id: RiverRoom
+    prefab: {fileID: 867123650186527829, guid: 712e23cf0ed66d64abbc9f2288c3d5d0, type: 3}
+  - id: RootRoomLeft
+    prefab: {fileID: 985309990597992570, guid: c67e4d0b7ec314a4697a520d16cd0753, type: 3}
+  - id: RootRoomRight
+    prefab: {fileID: 809498262423306353, guid: 34384bcbad7f55f489d770aa9970ee2d, type: 3}
+  - id: RoomUp
+    prefab: {fileID: 5804331021862406852, guid: e99f3fe413c12fb469a1ccc414d2b35a, type: 3}
+  - id: UpperRoom
+    prefab: {fileID: 3427241333444962316, guid: bb62441788936bd4ea0d83286331b083, type: 3}
   player: {fileID: 0}
 --- !u!114 &7472080516103004148
 MonoBehaviour:
