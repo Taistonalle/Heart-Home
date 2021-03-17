@@ -8,6 +8,7 @@ public class PersonalInventoryUI : MonoBehaviour
     public GameObject itemParent;
     InventorySlot[] slots;
     public GameObject inventoryUI;
+
     void Awake() {
         inv = FindObjectOfType<InventoryManager>();
         inv.onItemChangeCallback += UpdateUI;
@@ -24,6 +25,7 @@ public class PersonalInventoryUI : MonoBehaviour
         if (Input.GetButtonDown("Inventory")) {
             inventoryUI.SetActive(!inventoryUI.activeSelf);
             
+             
         }
     }
 
