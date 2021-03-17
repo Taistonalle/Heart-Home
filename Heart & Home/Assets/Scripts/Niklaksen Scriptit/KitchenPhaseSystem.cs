@@ -9,10 +9,17 @@ public class KitchenPhaseSystem : MonoBehaviour
     public KitchenPhaseChange phaseChange;
     public KitchenPhase currentPhase;
     public bool manualEnabled;
+    public RunPhaseUI run;
     
     void OnEnable()
     {
         currentPhase = KitchenPhase.None;
+        run.enabled = true;
+
+    }
+
+    private void OnDisable() {
+        run.enabled = false;
     }
 
     // Update is called once per frame

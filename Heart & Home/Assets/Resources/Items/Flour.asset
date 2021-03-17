@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ea146096e5e013459e6360617b9e327, type: 3}
-  m_Name: Water
+  m_Name: Flour
   m_EditorClassIdentifier: 
-  item: 4
-  sprite: {fileID: 21300000, guid: 149ea43196744c74ea383efde7fc8379, type: 3}
+  item: 16
+  sprite: {fileID: 21300000, guid: 7e4d8feb7964adc4097c969319c60c73, type: 3}
