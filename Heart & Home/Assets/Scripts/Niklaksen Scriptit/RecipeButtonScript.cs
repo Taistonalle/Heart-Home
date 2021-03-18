@@ -42,7 +42,7 @@ public class RecipeButtonScript : MonoBehaviour
     }
 
     void CheckForIngredients() {
-        var items = inventoryManager.kitchenInvIngredients.items;
+        var items = inventoryManager.personalInvIngredients.items;
         if (items.Exists(x => x.kind == mainIngredient.item)){
             hasMainIngredient = true;
             print("has mainingredient");

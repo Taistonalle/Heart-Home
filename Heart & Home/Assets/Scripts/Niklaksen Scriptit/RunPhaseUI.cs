@@ -5,7 +5,7 @@ using UnityEngine;
 public class RunPhaseUI : MonoBehaviour
 {
     // Start is called before the first frame update
-    KitchenPhaseSystem ksp;
+    public KitchenPhaseSystem ksp;
     public FridgeUI fridgeUI;
     public ExitUI exitUI;
     public AutoCauldronUI autoCauldronUI;
@@ -18,9 +18,7 @@ public class RunPhaseUI : MonoBehaviour
     public GameObject manuCauldron;
     public GameObject noticeBoard;
 
-    void Awake() {
-        ksp = FindObjectOfType<KitchenPhaseSystem>();
-    }
+    
 
     // Update is called once per frame
     void Update()

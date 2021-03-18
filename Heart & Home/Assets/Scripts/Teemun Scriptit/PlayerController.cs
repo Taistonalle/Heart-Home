@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour {
     public Rigidbody2D playerRB;
     Vector2 scaleChange;
     PlayerAttacks playerAttacks;
+    PlayerSounds playerSounds;
     PlayerManager playerManager;
     [Range(0.1f, 10f)] public float jumpForce = 2f;
     [Range(10, 100f)] public float dashForce = 10f;
@@ -33,7 +34,7 @@ public class PlayerController : MonoBehaviour {
     public bool canMoveNormally = true;
     public bool canDash = true;
     public bool facingRight = true, facingLeft;
-    bool jump;
+    bool jump, canPlayLandingSound;
     float deadzone = 0.1f;
     public float fallSpeed;
 
@@ -281,6 +282,7 @@ public class PlayerController : MonoBehaviour {
     void Start() {
         playerAttacks = GetComponent<PlayerAttacks>();
         playerManager = GetComponent<PlayerManager>();
+        playerSounds = GetComponent<PlayerSounds>();
         playerRB = GetComponent<Rigidbody2D>();
         collider = GetComponent<BoxCollider2D>();
         CalculateRaySpacing();
@@ -307,12 +309,17 @@ public class PlayerController : MonoBehaviour {
         if (grounded) {
             dashCount = 1;
             gravity = 0f;
+            if (canPlayLandingSound) {
+                //playerSounds.LandingSound();
+                //canPlayLandingSound = false;
+            }
         }
         else if (!grounded) {
             gravity = Input.GetButton("Jump") ? glideGravity : 9.81f;
+            //canPlayLandingSound = true;
         }
 
-        dash = Input.GetKey(KeyCode.LeftShift) || Input.GetButton("Fire1") ? true : false; //Fire1 nappi toimii ainakin PS4 ohjaimen "R1" nappina
+        dash = Input.GetKey(KeyCode.LeftShift) && canDash || Input.GetButton("Fire1") && canDash ? true : false; //Fire1 nappi toimii ainakin PS4 ohjaimen "R1" nappina
                                                                                            //gravity = Input.GetButton("Jump") ? glideGravity :  9.81f; 
 
         if (Input.GetKeyDown(KeyCode.V)) { //PlaceHolder napit hyökkäyksille
@@ -320,6 +327,7 @@ public class PlayerController : MonoBehaviour {
                 attackCooldownTimer = lightAttackCooldown;
                 ChangeAnimationState("Silkie_Attack");
                 playerAttacks.LightAttack();
+                playerSounds.LightAttackSound();
             }
         }
         else if (Input.GetKey(KeyCode.B) && playerAttacks.canDmgBuildUp) {
@@ -362,12 +370,14 @@ public class PlayerController : MonoBehaviour {
             newVelocity.x = Mathf.Lerp(newVelocity.x, 0, Time.deltaTime * (grounded ? groundFrictionWhenNoInput : airFrictionWhenNoInput));
         }
         if (jump) {
+            playerSounds.JumpSound();
             newVelocity.y = jumpForce;
             jump = false;
             //playerRB.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
 
         if (dash) {
+            playerSounds.DashSound();
             Dash();
         }
 

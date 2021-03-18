@@ -27,9 +27,9 @@ public class IngredientsVisualizer : MonoBehaviour
         Debug.Log("Updating cauldron inventory");
 
         for (int i = 0; i < slots.Length; i++) {
-            if (i < inv.kitchenInvIngredients.items.Count) {
-                slots[i].AddItem(inv.kitchenInvIngredients.items[i]);
-                print(inv.kitchenInvIngredients.items[i].kind);
+            if (i < inv.personalInvIngredients.items.Count) {
+                slots[i].AddItem(inv.personalInvIngredients.items[i]);
+                print(inv.personalInvIngredients.items[i].kind);
             } else {
                 slots[i].ClearSlot();
             }

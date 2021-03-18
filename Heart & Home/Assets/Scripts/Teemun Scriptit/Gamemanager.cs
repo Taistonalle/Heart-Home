@@ -9,11 +9,14 @@ public class Gamemanager : MonoBehaviour {
     public GameObject Camera;
     public ExitUI exitUI;
     SaveLoadManager saveLoad;
+    RunPhaseUI run;
     void Start() {
-        gameState = GameState.Menu;
+        gameState = GameState.Menu; 
         levelManager = FindObjectOfType<LevelManager>();
         kitchenManager = FindObjectOfType<KitchenManager>();
         saveLoad = FindObjectOfType<SaveLoadManager>();
+        StartState(GameState.Kitchen); //Teemun lisäys 17.2
+        run = FindObjectOfType<RunPhaseUI>(); //niklas 17.3
     }
 
     void GoToKitchen() {
@@ -75,6 +78,8 @@ public class Gamemanager : MonoBehaviour {
         } else if (exitUI.exiting == true) {
             StartState(GameState.Platforming);
             exitUI.exiting = false;
+            exitUI.enabled = false;
+            run.runningUI = false;
         }
     }
 }

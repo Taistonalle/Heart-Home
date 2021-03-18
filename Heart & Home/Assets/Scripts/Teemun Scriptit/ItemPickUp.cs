@@ -5,25 +5,25 @@ using UnityEngine;
 public class ItemPickUp : MonoBehaviour {
     InventoryManager invManager;
     public ItemDataScriptable itemToAdd;
-    public GameObject placeHolderText;
+    //public GameObject placeHolderText;
     void Start() {
         invManager = FindObjectOfType<InventoryManager>();
     }
 
     void OnTriggerEnter2D(Collider2D collision) {
-        placeHolderText.SetActive(true);
+        //placeHolderText.SetActive(true);
     }
 
     void OnTriggerExit2D(Collider2D collision) {
-        placeHolderText.SetActive(false);
+        //placeHolderText.SetActive(false);
     }
 
     void OnTriggerStay2D(Collider2D collision) {
         if (Input.GetKeyDown(KeyCode.E)) {
-            var item = new ItemData(itemToAdd);
-            invManager.kitchenInv.items.Add(item);
+            
+            invManager.AddItemInInventory(invManager.personalInvIngredients, itemToAdd);
             gameObject.SetActive(false);
-            print("Added " + item.kind);
+            print("Added " + itemToAdd.item);
         }
     }
 }

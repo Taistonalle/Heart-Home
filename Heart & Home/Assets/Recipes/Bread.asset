@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bread
   m_EditorClassIdentifier: 
   effect: 0
-  mainIngridient: 3
-  neededIngredient: 7
+  mainIngridient: 16
+  neededIngredient: 4
   cookkingTime: 0
-  sprite: {fileID: 21300000, guid: a2716b726e148f645a4cac03a99bf09b, type: 3}
+  sprite: {fileID: 21300000, guid: 830e59ca4dec81c4999953f6dca79adc, type: 3}

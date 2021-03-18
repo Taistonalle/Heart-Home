@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recipes:
-  - {fileID: 11400000, guid: fe62a4f62501cf049b83cb16dbeb31a8, type: 2}
+  - {fileID: 11400000, guid: 0ed8e9838410e2f48b53f3f57dd3ec88, type: 2}
 --- !u!1 &552125172444039991
 GameObject:
   m_ObjectHideFlags: 0
@@ -499,6 +499,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentPhase: 0
   manualEnabled: 0
+  run: {fileID: 1102067891021935936}
 --- !u!114 &1102067891021935936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -506,11 +507,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1674961121651069808}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf7eb586fd50bdb428b66e979086f465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ksp: {fileID: 614146571}
   fridgeUI: {fileID: 967240567}
   exitUI: {fileID: 116996924}
   autoCauldronUI: {fileID: 271362004}
@@ -1875,21 +1877,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemDatas:
-  - {fileID: 11400000, guid: 0ef79a2b0490ba746bd371da61ac65c7, type: 2}
-  - {fileID: 11400000, guid: 47da79b02612726488ace2e87deff46e, type: 2}
-  - {fileID: 11400000, guid: a76d43a05b49a8742be3dec095a6e31f, type: 2}
-  - {fileID: 11400000, guid: a82d83d40449dc741b52e911fb761a76, type: 2}
-  - {fileID: 11400000, guid: 5d73e00bbf501f240a3a7e0bce12efa7, type: 2}
-  - {fileID: 11400000, guid: 610f7f8933ed9214daa027101bea439f, type: 2}
-  - {fileID: 11400000, guid: 705e31c2b8c27c64abb9c9cf5aa04c73, type: 2}
-  - {fileID: 11400000, guid: 9fa0700866770d148a801eaafe111edc, type: 2}
-  - {fileID: 11400000, guid: 0c49a165541bc3f499c315de41f53cc3, type: 2}
-  - {fileID: 11400000, guid: 2cf4167d137233c43bd6325164fa1375, type: 2}
-  - {fileID: 11400000, guid: 584ed8711aa149a4e8c0ec49049dfec4, type: 2}
-  - {fileID: 11400000, guid: e3b83911a35c2c141a4e52072ab3a8b5, type: 2}
-  - {fileID: 11400000, guid: 7f54625534ed3da4984a35d458d43bff, type: 2}
-  - {fileID: 11400000, guid: 5343eb67d0a617a48875dc46630099be, type: 2}
   - {fileID: 11400000, guid: ad29f1b75dd41c24681fb16c16d64b52, type: 2}
+  - {fileID: 11400000, guid: fbdbdab9f9356184fa749794a37fc830, type: 2}
 --- !u!1 &5549406668030123984
 GameObject:
   m_ObjectHideFlags: 0
