@@ -442,6 +442,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5156879668434464271, guid: a9757d464b1a5aa439104d3455b11321, type: 3}
+      propertyPath: jumpMidOne_xTH
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5156879668434464271, guid: a9757d464b1a5aa439104d3455b11321, type: 3}
+      propertyPath: jumpMidOne_yTH
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5156879668434464271, guid: a9757d464b1a5aa439104d3455b11321, type: 3}
+      propertyPath: jumpMidTwo_xTH
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5156879668434464271, guid: a9757d464b1a5aa439104d3455b11321, type: 3}
+      propertyPath: jumpMidTwo_yTH
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9757d464b1a5aa439104d3455b11321, type: 3}
 --- !u!114 &1684914019 stripped

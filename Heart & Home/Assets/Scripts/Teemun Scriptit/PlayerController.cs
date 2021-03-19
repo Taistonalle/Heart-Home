@@ -36,7 +36,7 @@ public class PlayerController : MonoBehaviour {
     public bool facingRight = true, facingLeft;
     bool jump, canPlayLandingSound;
     float deadzone = 0.1f;
-    public float fallSpeed;
+
 
     float attackCooldownTimer = -1;
     public float lightAttackCooldown = 1f;
@@ -47,7 +47,13 @@ public class PlayerController : MonoBehaviour {
     public GameObject animPlayer;
     Animator animator;
     string currentState;
-
+    public float fallSpeed;
+    //public float jumpMidOne_xTH;
+    public float jumpMidOne_yTH;
+    //public float jumpMidTwo_xTH;
+    public float jumpMidTwo_yTH;
+    //public float jumpMidThree_xTH;
+    public float jumpMidThree_yTH;
     //
 
     //Camera stuff
@@ -342,12 +348,28 @@ public class PlayerController : MonoBehaviour {
         if (attackCooldownTimer > 0) {
             // attack still going, don't change animation
         }else if (!grounded) {
-            if (playerRB.velocity.y > -fallSpeed) {
-                ChangeAnimationState("Silkie_Jump");
-            } else {
-                ChangeAnimationState("Silkie_Falling");
-            }
+            if (playerRB.velocity.y >= 0) {
+                if (playerRB.velocity.y <= jumpMidThree_yTH) {
+                    ChangeAnimationState("Silkie_JumpMid_03");
+                } else if (playerRB.velocity.y <= jumpMidTwo_yTH) {
+                    ChangeAnimationState("Silkie_JumpMid_02");
+                } else if (playerRB.velocity.y <= jumpMidOne_yTH) {
+                    ChangeAnimationState("Silkie_JumpMid_01");
+                } else {
+                    ChangeAnimationState("Silkie_Jump");
+                }
+            } else if (playerRB.velocity.y < 0) {
+                if (Mathf.Abs(playerRB.velocity.y) >= fallSpeed) {
+                    ChangeAnimationState("Silkie_Falling");
+                }else if (Mathf.Abs(playerRB.velocity.y) >= jumpMidOne_yTH) {
+                    ChangeAnimationState("Silkie_JumpMid_06");
+                }else if (Mathf.Abs(playerRB.velocity.y) >= jumpMidTwo_yTH) {
+                    ChangeAnimationState("Silkie_JumpMid_05");
+                }else{
+                    ChangeAnimationState("Silkie_JumpMid_04");
+                } 
 
+            }
         }
         else if(Mathf.Abs(Input.GetAxis("Horizontal")) > 0.1f) {            
             ChangeAnimationState("Silkie_Run");
