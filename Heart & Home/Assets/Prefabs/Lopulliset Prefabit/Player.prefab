@@ -604,7 +604,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   playerRB: {fileID: 0}
-  jumpForce: 8
+  maxJumpHeight: 9.5
+  jumpForce: 13
   dashForce: 10
   dashCD: 2
   groundFrictionWhenNoInput: 8
@@ -613,10 +614,12 @@ MonoBehaviour:
   horizontalMaxSpeed: 10
   dashCount: 1
   gravity: 9.81
+  airTime: 0
   grounded: 0
   dash: 0
   canMoveNormally: 1
   canDash: 1
+  canGlide: 0
   facingRight: 1
   facingLeft: 0
   fallSpeed: 12
