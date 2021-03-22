@@ -15,22 +15,24 @@ public class MusicController : MonoBehaviour {
         kitchen = gameManager.gameState == GameState.Kitchen;
     }
 
-    void ChangeMusic() {
+    void StopCurrentMusic() {
         soundSource.Stop();
     }
 
     void Update() {
         if (gameManager.gameState == GameState.Platforming && !platform) {
-            ChangeMusic();
+            StopCurrentMusic();
             platform = true;
             kitchen = false;
-            soundSource.PlayOneShot(music[0]);
+            soundSource.clip = music[0];
+            soundSource.Play();
         }
         else if (gameManager.gameState == GameState.Kitchen && !kitchen) {
-            ChangeMusic();
+            StopCurrentMusic();
             kitchen = true;
             platform = false;
-            soundSource.PlayOneShot(music[1]);
+            soundSource.clip = music[1];
+            soundSource.Play();
         }
     }
 }
