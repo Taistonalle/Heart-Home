@@ -80,5 +80,6 @@ public class ScrollForUI : MonoBehaviour
 
     void ActivateSlot() {
         print("activated slot " + currentSlot);
+        inventorySlots[currentSlot].GetComponent<SelectedUI>().activated = true;
     }
 }
