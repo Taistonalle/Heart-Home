@@ -473,6 +473,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1587341406, guid: 0413fa95798e81a4c99b70a57b91bce8, type: 3}
+      propertyPath: recipes.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1587341406, guid: 0413fa95798e81a4c99b70a57b91bce8, type: 3}
+      propertyPath: recipes.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3d7509fd91ce7684ba7851b575112b67, type: 2}
+    - target: {fileID: 1587341406, guid: 0413fa95798e81a4c99b70a57b91bce8, type: 3}
+      propertyPath: recipes.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7c29df7a98f97dc4c90fe6836ebf4a86, type: 2}
+    - target: {fileID: 1587341406, guid: 0413fa95798e81a4c99b70a57b91bce8, type: 3}
+      propertyPath: recipes.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: fe62a4f62501cf049b83cb16dbeb31a8, type: 2}
     - target: {fileID: 1674961121651069808, guid: 0413fa95798e81a4c99b70a57b91bce8, type: 3}
       propertyPath: m_Name
       value: Kitchen
