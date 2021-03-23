@@ -994,6 +994,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 545844970, guid: a9757d464b1a5aa439104d3455b11321, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5156879668434464259, guid: a9757d464b1a5aa439104d3455b11321, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -1043,9 +1047,37 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5156879668434464271, guid: a9757d464b1a5aa439104d3455b11321, type: 3}
+      propertyPath: fallSpeed
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5156879668434464271, guid: a9757d464b1a5aa439104d3455b11321, type: 3}
       propertyPath: animPlayer
       value: 
       objectReference: {fileID: 1840768765}
+    - target: {fileID: 5156879668434464271, guid: a9757d464b1a5aa439104d3455b11321, type: 3}
+      propertyPath: jumpMidOne_xTH
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5156879668434464271, guid: a9757d464b1a5aa439104d3455b11321, type: 3}
+      propertyPath: jumpMidOne_yTH
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5156879668434464271, guid: a9757d464b1a5aa439104d3455b11321, type: 3}
+      propertyPath: jumpMidTwo_xTH
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5156879668434464271, guid: a9757d464b1a5aa439104d3455b11321, type: 3}
+      propertyPath: jumpMidTwo_yTH
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5156879668434464271, guid: a9757d464b1a5aa439104d3455b11321, type: 3}
+      propertyPath: jumpMidThree_xTH
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5156879668434464271, guid: a9757d464b1a5aa439104d3455b11321, type: 3}
+      propertyPath: jumpMidThree_yTH
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9757d464b1a5aa439104d3455b11321, type: 3}
 --- !u!1 &2136339136

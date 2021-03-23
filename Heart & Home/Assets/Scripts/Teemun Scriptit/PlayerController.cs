@@ -19,24 +19,25 @@ public class PlayerController : MonoBehaviour {
     PlayerAttacks playerAttacks;
     PlayerSounds playerSounds;
     PlayerManager playerManager;
-    [Range(0.1f, 10f)] public float jumpForce = 2f;
-    [Range(10, 100f)] public float dashForce = 10f;
+    [Range(1f, 20f)] public float maxJumpHeight = 1f;
+    [Range(0.1f, 100f)] public float jumpForce = 2f;
+    [Range(2, 10f)] public float dashForce = 10f;
     [Range(1f, 5f)] public float dashCD = 2f;
     [Range(0.1f, 10f)] public float groundFrictionWhenNoInput = 2f;
     [Range(0.1f, 10f)] public float airFrictionWhenNoInput = 2f;
     [Range(1f, 50f)] public float horizontalAccel = 1;
     [Range(1f, 30f)] public float horizontalMaxSpeed = 5;
     public int dashCount = 1;
-    public float gravity = 9.81f;
+    public float gravity = 9.81f, airTime;
     public bool grounded;
     float glideGravity;
     public bool dash;
     public bool canMoveNormally = true;
-    public bool canDash = true;
+    public bool canDash = true, canGlide;
     public bool facingRight = true, facingLeft;
-    bool jump, canPlayLandingSound;
+    bool jump, canPlayLandingSound, clampYSpeed;
     float deadzone = 0.1f;
-    public float fallSpeed;
+
 
     float attackCooldownTimer = -1;
     public float lightAttackCooldown = 1f;
@@ -47,7 +48,13 @@ public class PlayerController : MonoBehaviour {
     public GameObject animPlayer;
     Animator animator;
     string currentState;
-
+    public float fallSpeed;
+    //public float jumpMidOne_xTH;
+    public float jumpMidOne_yTH;
+    //public float jumpMidTwo_xTH;
+    public float jumpMidTwo_yTH;
+    //public float jumpMidThree_xTH;
+    public float jumpMidThree_yTH;
     //
 
     //Camera stuff
@@ -193,7 +200,11 @@ public class PlayerController : MonoBehaviour {
         yield return new WaitForSeconds(dashCD);
         canDash = true;
     }
-
+    IEnumerator ClampY() {
+        clampYSpeed = true;
+        yield return new WaitForSeconds(0.2f);
+        clampYSpeed = false;
+    }
     void Dash() { //Monster funktion, i know... i know..
         var horiInput = Vector2.right * Input.GetAxis("Horizontal");
         var vertiInput = Vector2.up * Input.GetAxis("Vertical");
@@ -209,12 +220,16 @@ public class PlayerController : MonoBehaviour {
         var up = new Vector2(0f, 1f);
         var down = new Vector2(0f, -1f);
 
+        var zero = new Vector2(0f, 0f);
+
         if (horiInput.x > 0 && vertiInput.y > 0 && canDash && dashCount == 1) {
             print("Dash up right");
             dashCount--;
             StartCoroutine(dashTimer());
             StartCoroutine(walkTimer());
-            playerRB.AddForce(upRight * dashForce, ForceMode2D.Impulse);
+            //playerRB.AddForce(upRight * dashForce, ForceMode2D.Impulse);
+            playerRB.velocity = zero;
+            playerRB.velocity = upRight * (dashForce * 0.5f);
         }
         //else if (horiInput.x > 0 && vertiInput.y < 0 && canDash) {
         //    print("Dash down right");
@@ -227,7 +242,9 @@ public class PlayerController : MonoBehaviour {
             dashCount--;
             StartCoroutine(dashTimer());
             StartCoroutine(walkTimer());
-            playerRB.AddForce(upLeft * dashForce, ForceMode2D.Impulse);
+            //playerRB.AddForce(upLeft * dashForce, ForceMode2D.Impulse);
+            playerRB.velocity = zero;
+            playerRB.velocity = upLeft * (dashForce * 0.5f);
         }
         //else if (horiInput.x < 0 && vertiInput.y < 0 && canDash) {
         //    print("Dash down left");
@@ -240,21 +257,27 @@ public class PlayerController : MonoBehaviour {
             dashCount--;
             StartCoroutine(dashTimer());
             StartCoroutine(walkTimer());
-            playerRB.AddForce(right * dashForce, ForceMode2D.Impulse);
+            //playerRB.AddForce(right * dashForce, ForceMode2D.Impulse);
+            playerRB.velocity = zero;
+            playerRB.velocity = right * (dashForce * 2);
         }
         else if (horiInput.x < 0 && canDash && dashCount == 1) {
             print("Dash left");
             dashCount--;
             StartCoroutine(dashTimer());
             StartCoroutine(walkTimer());
-            playerRB.AddForce(left * dashForce, ForceMode2D.Impulse);
+            //playerRB.AddForce(left * dashForce, ForceMode2D.Impulse);
+            playerRB.velocity = zero;
+            playerRB.velocity = left * (dashForce * 2);
         }
         else if (vertiInput.y > 0 && canDash && dashCount == 1) {
             print("Dash up");
             dashCount--;
             StartCoroutine(dashTimer());
             StartCoroutine(walkTimer());
-            playerRB.AddForce(up * dashForce, ForceMode2D.Impulse);
+            //playerRB.AddForce(up * dashForce, ForceMode2D.Impulse);
+            playerRB.velocity = zero;
+            playerRB.velocity = up * (dashForce * 0.5f);
         }
         //else if (vertiInput.y < 0 && canDash) {
         //    print("Dash down");
@@ -315,12 +338,14 @@ public class PlayerController : MonoBehaviour {
             }
         }
         else if (!grounded) {
-            gravity = Input.GetButton("Jump") ? glideGravity : 9.81f;
+            gravity = Input.GetButton("Jump") && canGlide ? glideGravity : 9.81f;
             //canPlayLandingSound = true;
         }
 
+        airTime = !grounded ? airTime += Time.deltaTime : 0f;
+        canGlide = airTime >= 1f ? true : false;
+
         dash = Input.GetKey(KeyCode.LeftShift) && canDash || Input.GetButton("Fire1") && canDash ? true : false; //Fire1 nappi toimii ainakin PS4 ohjaimen "R1" nappina
-                                                                                           //gravity = Input.GetButton("Jump") ? glideGravity :  9.81f; 
 
         if (Input.GetKeyDown(KeyCode.V)) { //PlaceHolder napit hyökkäyksille
             if (attackCooldownTimer < 0) {
@@ -342,12 +367,28 @@ public class PlayerController : MonoBehaviour {
         if (attackCooldownTimer > 0) {
             // attack still going, don't change animation
         }else if (!grounded) {
-            if (playerRB.velocity.y > -fallSpeed) {
-                ChangeAnimationState("Silkie_Jump");
-            } else {
-                ChangeAnimationState("Silkie_Falling");
-            }
+            if (playerRB.velocity.y >= 0) {
+                if (playerRB.velocity.y <= jumpMidThree_yTH) {
+                    ChangeAnimationState("Silkie_JumpMid_03");
+                } else if (playerRB.velocity.y <= jumpMidTwo_yTH) {
+                    ChangeAnimationState("Silkie_JumpMid_02");
+                } else if (playerRB.velocity.y <= jumpMidOne_yTH) {
+                    ChangeAnimationState("Silkie_JumpMid_01");
+                } else {
+                    ChangeAnimationState("Silkie_Jump");
+                }
+            } else if (playerRB.velocity.y < 0) {
+                if (Mathf.Abs(playerRB.velocity.y) >= fallSpeed) {
+                    ChangeAnimationState("Silkie_Falling");
+                }else if (Mathf.Abs(playerRB.velocity.y) >= jumpMidOne_yTH) {
+                    ChangeAnimationState("Silkie_JumpMid_06");
+                }else if (Mathf.Abs(playerRB.velocity.y) >= jumpMidTwo_yTH) {
+                    ChangeAnimationState("Silkie_JumpMid_05");
+                }else{
+                    ChangeAnimationState("Silkie_JumpMid_04");
+                } 
 
+            }
         }
         else if(Mathf.Abs(Input.GetAxis("Horizontal")) > 0.1f) {            
             ChangeAnimationState("Silkie_Run");
@@ -362,8 +403,10 @@ public class PlayerController : MonoBehaviour {
         var horizontalInput = Vector2.right * Input.GetAxis("Horizontal");
         var newVelocity = playerRB.velocity + horizontalInput * horizontalAccel * Time.deltaTime;
         newVelocity.x = Mathf.Clamp(newVelocity.x, -horizontalMaxSpeed, horizontalMaxSpeed);
-        
-        if(Input.GetAxis("Horizontal") > 0 && grounded) {
+
+        if (clampYSpeed) newVelocity.y = Mathf.Clamp(newVelocity.y, -gravity, maxJumpHeight);
+
+        if (Input.GetAxis("Horizontal") > 0 && grounded) {
         }
         //Friction / kitka
         if(Mathf.Abs(horizontalInput.x) < deadzone) {
@@ -372,6 +415,7 @@ public class PlayerController : MonoBehaviour {
         if (jump) {
             playerSounds.JumpSound();
             newVelocity.y = jumpForce;
+            StartCoroutine(ClampY());
             jump = false;
             //playerRB.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
