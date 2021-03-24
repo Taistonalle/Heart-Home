@@ -108,7 +108,7 @@ GameObject:
   - component: {fileID: 8228254774519407245}
   m_Layer: 8
   m_Name: MobTest
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -189,6 +189,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monsterState: 0
   healthPoints: 100
+  boxCastXAxis: 1.33
+  boxCastYAxis: 0.3
+  XAxisOffset: 0
+  YAxisOffset: 1.2
+  headBounceForce: 8
+  canBeBounced: 1
 --- !u!114 &8228254774519407245
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -14918,6 +14918,63 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: be5e352c8e1a7c847b69e7dda9c839b3, type: 3}
+--- !u!1001 &8015397756488073231
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8015397755788838022, guid: f27af987da2e58f4799683f97f19816b, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015397755788838022, guid: f27af987da2e58f4799683f97f19816b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -12.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015397755788838022, guid: f27af987da2e58f4799683f97f19816b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015397755788838022, guid: f27af987da2e58f4799683f97f19816b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015397755788838022, guid: f27af987da2e58f4799683f97f19816b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015397755788838022, guid: f27af987da2e58f4799683f97f19816b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015397755788838022, guid: f27af987da2e58f4799683f97f19816b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015397755788838022, guid: f27af987da2e58f4799683f97f19816b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015397755788838022, guid: f27af987da2e58f4799683f97f19816b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015397755788838022, guid: f27af987da2e58f4799683f97f19816b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015397755788838022, guid: f27af987da2e58f4799683f97f19816b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015397755788838023, guid: f27af987da2e58f4799683f97f19816b, type: 3}
+      propertyPath: m_Name
+      value: KorentoMobi
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f27af987da2e58f4799683f97f19816b, type: 3}
 --- !u!1001 &8228254774328188494
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14977,40 +15034,8 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8228254774519407242, guid: 766fd2d3481d529428aa2919b35a0c5c, type: 3}
-      propertyPath: XAxisOffset
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8228254774519407242, guid: 766fd2d3481d529428aa2919b35a0c5c, type: 3}
-      propertyPath: YAxisOffset
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8228254774519407242, guid: 766fd2d3481d529428aa2919b35a0c5c, type: 3}
-      propertyPath: boxCastXAxis
-      value: 1.33
-      objectReference: {fileID: 0}
-    - target: {fileID: 8228254774519407242, guid: 766fd2d3481d529428aa2919b35a0c5c, type: 3}
-      propertyPath: boxCastYAxis
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8228254774519407242, guid: 766fd2d3481d529428aa2919b35a0c5c, type: 3}
-      propertyPath: canBeBounced
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8228254774519407242, guid: 766fd2d3481d529428aa2919b35a0c5c, type: 3}
-      propertyPath: contact.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
-    - target: {fileID: 8228254774519407242, guid: 766fd2d3481d529428aa2919b35a0c5c, type: 3}
-      propertyPath: headBounceForce
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8228254774519407242, guid: 766fd2d3481d529428aa2919b35a0c5c, type: 3}
-      propertyPath: detectLayer.m_Bits
-      value: 64
-      objectReference: {fileID: 0}
-    - target: {fileID: 8228254774519407245, guid: 766fd2d3481d529428aa2919b35a0c5c, type: 3}
-      propertyPath: monsterSpeed
+    - target: {fileID: 8228254774519407244, guid: 766fd2d3481d529428aa2919b35a0c5c, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
