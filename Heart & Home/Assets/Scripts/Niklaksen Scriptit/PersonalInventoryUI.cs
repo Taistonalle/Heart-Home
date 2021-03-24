@@ -22,7 +22,6 @@ public class PersonalInventoryUI : MonoBehaviour
     void Update() {
         CheckState();
         if (Input.GetButtonDown("Inventory")) {
-            UpdateUI();
             inventoryUI.SetActive(!inventoryUI.activeSelf);   
         }
 

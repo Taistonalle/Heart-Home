@@ -16,6 +16,7 @@ public class PersonalIngredientsUI : MonoBehaviour
             }
         }
         scroll.enabled = true;
+        UpdateUI();
     }
     private void OnDisable() {
         scroll.enabled = false;

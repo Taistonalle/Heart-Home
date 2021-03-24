@@ -12,7 +12,7 @@ public class AddItemToInvTest : MonoBehaviour {
     void Update() {
         if (Input.GetKeyDown(KeyCode.F)) { //F to pay respects
             var item = new ItemData(itemToAdd);
-            invManager.kitchenInv.items.Add(item);
+            invManager.kitchenInv.items.Add(itemToAdd);
         }
     }
 }

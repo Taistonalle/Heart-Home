@@ -8,11 +8,13 @@ public class AutoCauldronUI : MonoBehaviour
     public RunPhaseUI run;
     // Start is called before the first frame update
     public GameObject ui;
+    public IngredientsVisualizer viz;
 
     void OnEnable()
     {
         controller.enabled = true;
         ui.SetActive(true);
+        viz.enabled = true;
     }
 
     // Update is called once per frame
@@ -23,6 +25,7 @@ public class AutoCauldronUI : MonoBehaviour
             controller.enabled = false;
             ui.SetActive(false);
             this.enabled = false;
+            viz.enabled = false;
             print("Exiting Automatic CauldronUI");
         }
     }

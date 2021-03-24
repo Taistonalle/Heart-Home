@@ -7,6 +7,7 @@ public enum ItemType { Food, Flower, Moondust, Wheat, Water, Honey, Milk, Egg, S
 public class ItemData  {
     public ItemType kind;
     public Sprite sprite;
+    public Effect effect;
 
     
     public ItemData(ItemDataScriptable data) {

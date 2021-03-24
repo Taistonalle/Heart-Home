@@ -29,7 +29,7 @@ public class IngredientsVisualizer : MonoBehaviour
         for (int i = 0; i < slots.Length; i++) {
             if (i < inv.personalInvIngredients.items.Count) {
                 slots[i].AddItem(inv.personalInvIngredients.items[i]);
-                print(inv.personalInvIngredients.items[i].kind);
+                print(inv.personalInvIngredients.items[i].item);
             } else {
                 slots[i].ClearSlot();
             }

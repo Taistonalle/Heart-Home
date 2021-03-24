@@ -15,6 +15,7 @@ public class PersonalFoodUI : MonoBehaviour
             }
         }
         scroll.enabled = true;
+        UpdateUI();
     }
     private void OnDisable() {
         scroll.enabled = false;
@@ -23,8 +24,8 @@ public class PersonalFoodUI : MonoBehaviour
 
     public void UpdateUI() {
         for (int i = 0; i < inventorySlots.Count; i++) {
-            if (i < inv.personalInvFood.items.Count) {
-                inventorySlots[i].AddItem(inv.personalInvFood.items[i]);
+            if (i < inv.personalInvFood.recipes.Count) {
+                inventorySlots[i].AddRecipe(inv.personalInvFood.recipes[i]);
             } else {
                 inventorySlots[i].ClearSlot();
             }

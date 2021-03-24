@@ -3,5 +3,5 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Inventory  {
-    public List<ItemData> items = new List<ItemData>();
+    public List<ItemDataScriptable> items = new List<ItemDataScriptable>();
 }

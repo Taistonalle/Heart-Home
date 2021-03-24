@@ -18,6 +18,7 @@ public class RecipeButtonScript : MonoBehaviour
     InventoryManager inventoryManager;
     bool hasMainIngredient;
     bool hasSecondIngredient;
+    public Recipes recipe;
 
     private void Awake() {
         inventoryManager = FindObjectOfType<InventoryManager>();
@@ -39,16 +40,19 @@ public class RecipeButtonScript : MonoBehaviour
     void CookDish() {
         //inventoryManager.AddItemToDishInventory()
         print("Cooked" + recipeName);
+        inventoryManager.AddFoodInInventory(inventoryManager.personalInvFood, recipe);
+        inventoryManager.RemovItemInInventory(inventoryManager.personalInvIngredients, mainIngredient);
+        inventoryManager.RemovItemInInventory(inventoryManager.personalInvIngredients, secondIngredient);
     }
 
     void CheckForIngredients() {
         var items = inventoryManager.personalInvIngredients.items;
-        if (items.Exists(x => x.kind == mainIngredient.item)){
+        if (items.Exists(x => x.item == mainIngredient.item)){
             hasMainIngredient = true;
             print("has mainingredient");
         }
         
-        if (items.Exists(x => x.kind == secondIngredient.item)) {
+        if (items.Exists(x => x.item == secondIngredient.item)) {
             hasSecondIngredient = true;
             print("Has second ingredient");
         }

@@ -7,18 +7,27 @@ public class InventorySlot : MonoBehaviour
 {
     public Image icon;
     // Start is called before the first frame update
-    public ItemData item;
+    public ItemDataScriptable item;
+    public Recipes recipe;
 
-    public void AddItem(ItemData newItem) {
+    public void AddItem(ItemDataScriptable newItem) {
         item = newItem;
 
         icon.sprite = item.sprite;
         icon.enabled = true;
     }
 
+    public void AddRecipe(Recipes recipe) {
+        item = null;
+        icon.sprite = recipe.sprite;
+        icon.enabled = true;
+    }
+
+
     public void ClearSlot() {
         item = null;
         icon.sprite = null;
         icon.enabled = false;
+        recipe = null;
     }
 }

@@ -45,11 +45,12 @@ public class RecipeController : MonoBehaviour
                 newButtonScript.secondImage.sprite = ingContainer.itemDatas[i].sprite;
             }
         }
-        print(mainIngredient + " " + secIngredient);
+        //print(mainIngredient + " " + secIngredient);
         newButtonScript.dishImage.sprite = dishIcon;
         newButtonScript.cookTime = cookTime;
         newButtonScript.recipeEffect = effect;
         newButtonScript.recipeName.text = recipe.ToString();
+        newButtonScript.recipe = recipe;
         recipeButtons.Add(newButton);
     }
 }
