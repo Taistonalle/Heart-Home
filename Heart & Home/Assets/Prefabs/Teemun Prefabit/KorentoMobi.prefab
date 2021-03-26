@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 8015397756683727554}
   - component: {fileID: 8015397756683727552}
   - component: {fileID: 8015397756683727553}
+  - component: {fileID: 1875471217}
   m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
@@ -177,7 +178,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 757195ea9b82de843b3277d8edccf557, type: 2}
+  - {fileID: 2100000, guid: a767c369f6a00a64085b6428042532dd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -198,7 +199,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8387a0d82578fd8439bf5c8cdca9c6d7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3ac139ecddcd37542949448655b5d59e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -222,9 +223,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tintAmount: 0
-  tintMat: {fileID: 2100000, guid: 757195ea9b82de843b3277d8edccf557, type: 2}
+  tintMat: {fileID: 2100000, guid: a767c369f6a00a64085b6428042532dd, type: 2}
   dmgColor: {r: 10.680627, g: 0, b: 0, a: 1}
   blinkSpeed: 5
+--- !u!95 &1875471217
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8015397756683727555}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c1d7f139bb0ae394aa76324421cf4b70, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8015397756779500187
 GameObject:
   m_ObjectHideFlags: 0
@@ -352,7 +372,7 @@ MonoBehaviour:
   boxCastYAxis: 0.29
   XAxisOffset: 0
   YAxisOffset: 0.62
-  headBounceForce: 0
+  headBounceForce: 5
   canBeBounced: 1
 --- !u!1 &8015397756821096024
 GameObject:
