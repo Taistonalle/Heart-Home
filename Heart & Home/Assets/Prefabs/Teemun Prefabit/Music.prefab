@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   music:
-  - {fileID: 8300000, guid: 81f8382680a6f034db5ecfeaefc901b8, type: 3}
+  - {fileID: 8300000, guid: 8f8b3fdfc24d1d748a39da264415e1f1, type: 3}
   - {fileID: 8300000, guid: bfde98308f90a794291843931678a230, type: 3}
   platform: 0
   kitchen: 0

@@ -14,33 +14,55 @@ public class KorentoController : MonoBehaviour {
     GameObject currentFlightPoint;
     public KorentoState state;
     bool idleRunning;
+    Vector2 scale;
     Rigidbody2D korentoRB;
+    Animator animator;
     PlayerManager pManager;
 
     void Start() {
         pManager = FindObjectOfType<PlayerManager>();
         korentoRB = GetComponent<Rigidbody2D>();
+        animator = GetComponentInChildren<Animator>();
         state = KorentoState.Idle;
+        scale = transform.localScale;
         currentFlightPoint = flightPoints[4];
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
         var target = collision.gameObject;
-        if(state == KorentoState.Dashing && target.tag == "Player") {
+        if (state == KorentoState.Dashing && target.tag == "Player") {
             pManager.Damage(korentoDamage);
         }
     }
 
-    void Update() {
+    void ScaleChange() {
+        if (transform.localPosition.x > 0) {
+            scale = new Vector2(-1f, 1f);
+        }
+        else if (transform.localPosition.x < 0) {
+            scale = new Vector2(1f, 1f);
+        }
     }
+
+    void Update() {
+        ScaleChange();
+        transform.localScale = scale;
+    }
+
     void FixedUpdate() {
-        if (state == KorentoState.Idle) IdleMovement();
+        if (state == KorentoState.Idle) {
+            IdleMovement();
+            animator.Play("Idle");
+        }
 
         if (state == KorentoState.Idle && !idleRunning) {
             StartCoroutine(Idle());
         }
         else if (state == KorentoState.Dashing) KorentoDash();
-        else if (state == KorentoState.TakingDamage) StartCoroutine(TakingDamage());
+        else if (state == KorentoState.TakingDamage) {
+            StartCoroutine(TakingDamage());
+            animator.Play("TakingDamage");
+        }
     }
 
     void KorentoDash() {
@@ -70,7 +92,7 @@ public class KorentoController : MonoBehaviour {
     void ChooseFlightPoint() {
         var randomPoint = Random.Range(0, flightPoints.Length);
         var samePoint = flightPoints[randomPoint] == currentFlightPoint;
-        if(samePoint) {
+        if (samePoint) {
             Debug.LogWarning("Same flight point, rerolling");
             ChooseFlightPoint();
         }

@@ -482,6 +482,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1875471213 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8015397756683727555, guid: f27af987da2e58f4799683f97f19816b, type: 3}
+  m_PrefabInstance: {fileID: 8015397756488073231}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1875471217
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875471213}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c1d7f139bb0ae394aa76324421cf4b70, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &1975360280 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 116996924, guid: 0413fa95798e81a4c99b70a57b91bce8, type: 3}
@@ -14855,6 +14879,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7303643798935330590, guid: 0413fa95798e81a4c99b70a57b91bce8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7622865593523354246, guid: 0413fa95798e81a4c99b70a57b91bce8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0413fa95798e81a4c99b70a57b91bce8, type: 3}
 --- !u!1001 &5187427659715918067
@@ -14972,6 +15004,22 @@ PrefabInstance:
     - target: {fileID: 8015397755788838023, guid: f27af987da2e58f4799683f97f19816b, type: 3}
       propertyPath: m_Name
       value: KorentoMobi
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015397756683727552, guid: f27af987da2e58f4799683f97f19816b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3ac139ecddcd37542949448655b5d59e, type: 3}
+    - target: {fileID: 8015397756683727552, guid: f27af987da2e58f4799683f97f19816b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a767c369f6a00a64085b6428042532dd, type: 2}
+    - target: {fileID: 8015397756683727553, guid: f27af987da2e58f4799683f97f19816b, type: 3}
+      propertyPath: tintMat
+      value: 
+      objectReference: {fileID: 2100000, guid: a767c369f6a00a64085b6428042532dd, type: 2}
+    - target: {fileID: 8015397756779500185, guid: f27af987da2e58f4799683f97f19816b, type: 3}
+      propertyPath: headBounceForce
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f27af987da2e58f4799683f97f19816b, type: 3}
