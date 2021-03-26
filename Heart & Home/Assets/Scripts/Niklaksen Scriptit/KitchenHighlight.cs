@@ -44,15 +44,15 @@ public class KitchenHighlight : MonoBehaviour
     void Highlight(KitchenPhase phase) {
         ReturnToScale();
         if (phase == KitchenPhase.Fridge) {
-            fridge.transform.localScale += new Vector3(2f, 2f, 0f);
+            fridge.transform.localScale += new Vector3(0.1f, 0.1f, 0f);
         } else if (phase == KitchenPhase.Exit) {
-            exit.transform.localScale += new Vector3(2f, 2f, 0f);
+            exit.transform.localScale += new Vector3(0.1f, 0.1f, 0f);
         } else if (phase == KitchenPhase.AutoCauldron) {
-            autoCauldron.transform.localScale += new Vector3(2f, 2f, 0f);
+            autoCauldron.transform.localScale += new Vector3(0.1f, 0.1f, 0f);
         } else if (phase == KitchenPhase.ManuCauldron) {
-            manuCauldron.transform.localScale += new Vector3(2f, 2f, 0f);
+            manuCauldron.transform.localScale += new Vector3(0.1f, 0.1f, 0f);
         } else if (phase == KitchenPhase.NoticeBoard) {
-            noticeBoard.transform.localScale += new Vector3(2f, 2f, 0f);
+            noticeBoard.transform.localScale += new Vector3(0.1f, 0.1f, 0f);
         } else {
             ReturnToScale();
         }
