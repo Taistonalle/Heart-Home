@@ -12,16 +12,19 @@ public class MonsterController : MonoBehaviour {
     public bool chaseEnabled, attackEnabled, searchEnabled;
     float iddleCD, chaseSpeed, normalSpeed;
     bool movingLeft = true, canIdle = true;
-    Vector2 returnPoint, monsterPos, patrolPoint1, patrolPoint2;
+    Vector2 returnPoint, monsterPos, patrolPoint1, patrolPoint2, scale;
     public GameObject[] patrolPoints;
     RaycastHit2D circleHit, circleHitB;
     GameObject player;
+    Animator animator;
     Rigidbody2D mRb;
 
     void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
         mManager = GetComponent<MonsterManager>();
         mRb = GetComponent<Rigidbody2D>();
+        animator = GetComponentInChildren<Animator>();
+        scale = transform.localScale;
         iddleCD = patrolIdleTime * 2;
         normalSpeed = monsterSpeed;
         chaseSpeed = monsterSpeed * 1.2f;
@@ -33,6 +36,8 @@ public class MonsterController : MonoBehaviour {
 
     void Update() {
         monsterPos = gameObject.transform.position;
+        transform.localScale = scale;
+        ScaleChange();
     }
     void FixedUpdate() {
         circleHit = Physics2D.CircleCast(gameObject.transform.position, detectRadius, Vector2.right, 0f, detectLayer);
@@ -45,6 +50,10 @@ public class MonsterController : MonoBehaviour {
         else if (mManager.monsterState == MonsterStates.Attacking) Attacking();
         else if (mManager.monsterState == MonsterStates.Searching) Searching();
         else if (mManager.monsterState == MonsterStates.Return) Return();
+    }
+
+    void ScaleChange() {
+        scale = movingLeft ? new Vector2(-1f, 1f) : new Vector2(1f, 1f);
     }
 
     void StateUpdater() {
@@ -89,6 +98,7 @@ public class MonsterController : MonoBehaviour {
     }
 
     public void Patrol() {
+        animator.Play("Walk");
         monsterSpeed = normalSpeed;
         var mRbXPos = mRb.position.x;
         mRbXPos = Mathf.Clamp(mRbXPos, patrolPoint1.x, patrolPoint2.x);
@@ -113,6 +123,7 @@ public class MonsterController : MonoBehaviour {
     }
     void Idle() {
         //Placeholder funktio jos tahtoo jotain erikoita idleen. Esim oma animaatio.
+        animator.Play("Idle");
     }
 
     public void Chase() {

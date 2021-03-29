@@ -6,6 +6,8 @@ public class KorentoManager : MonoBehaviour {
     KorentoController kController;
     RaycastHit2D playerOnTop;
     PlayerController pController;
+    AudioSource audioSource;
+    public AudioClip deathSound;
     public LayerMask contact;
     TintControl tintControl;
     [Range(0, 100)] public int healthPoints = 100;
@@ -18,6 +20,7 @@ public class KorentoManager : MonoBehaviour {
         tintControl = GetComponentInChildren<TintControl>();
         pController = FindObjectOfType<PlayerController>();
         kController = GetComponent<KorentoController>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update() {
@@ -53,7 +56,9 @@ public class KorentoManager : MonoBehaviour {
         kController.state = KorentoState.TakingDamage;
     }
     void Death() {
-        Destroy(gameObject);
+        audioSource.Stop();
+        audioSource.PlayOneShot(deathSound);
+        Destroy(gameObject, deathSound.length);
         print("Monster defeated!");
     }
 

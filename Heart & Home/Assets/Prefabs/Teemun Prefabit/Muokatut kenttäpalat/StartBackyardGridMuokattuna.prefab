@@ -4159,7 +4159,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 407bb4de8814e01488f2596f0887962d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickUpSound: {fileID: 8300000, guid: b090ae724a41f18469ab82d86e97bebb, type: 3}
   itemToAdd: {fileID: 11400000, guid: fbdbdab9f9356184fa749794a37fc830, type: 2}
+  infoText: Flour added!
 --- !u!1 &6865918349729578428
 GameObject:
   m_ObjectHideFlags: 0
@@ -4231,7 +4233,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 407bb4de8814e01488f2596f0887962d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickUpSound: {fileID: 8300000, guid: b090ae724a41f18469ab82d86e97bebb, type: 3}
   itemToAdd: {fileID: 11400000, guid: ad29f1b75dd41c24681fb16c16d64b52, type: 2}
+  infoText: Water added!
 --- !u!1 &8755471525420904481
 GameObject:
   m_ObjectHideFlags: 0
