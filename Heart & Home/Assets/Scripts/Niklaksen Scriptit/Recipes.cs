@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-    public enum Effect { Health, Stamina, Magic, Speed, Strength }
+    public enum Effect { Health, Stamina, Magic, Speed, Strength, Dash }
 
 [CreateAssetMenu(fileName = "Recipe", menuName = "RecipeInventory", order = 1)]
 

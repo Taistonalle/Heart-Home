@@ -7,14 +7,49 @@ public class LetterScript : MonoBehaviour
     // Start is called before the first frame update
     public bool completedMission;
     public Effect reward;
-    void Start()
-    {
-        
+    public Recipes neededDish;
+    int letterSwitch = 0;
+    public SelectedUI returnUI;
+    public SelectedUI acceptUI;
+
+
+    private void Update() {
+        Visualize();
+        LetterMovement();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    void Visualize() {
+        if (letterSwitch == 0) {
+            returnUI.selected = true;
+            acceptUI.selected = false;
+        } else if (letterSwitch == 1) {
+            returnUI.selected = false;
+            acceptUI.selected = true;
+        }
+    }
+    public void Close() {
+        returnUI.activated = false;
+        acceptUI.activated = false;
+    }
+    void LetterMovement() {
+        if (Input.GetKeyDown(KeyCode.D)) {
+            if (letterSwitch == 0) {
+                letterSwitch = 1;
+            } else if (letterSwitch == 1) {
+                letterSwitch = 0;
+            }
+        } else if (Input.GetKeyDown(KeyCode.A)) {
+            if (letterSwitch == 0) {
+                letterSwitch = 1;
+            } else if (letterSwitch == 1) {
+                letterSwitch = 0;
+            }
+        } else if (Input.GetKeyDown(KeyCode.E)) {
+            if (letterSwitch == 0) {
+                returnUI.activated = true;
+            } else if (letterSwitch == 1) {
+                acceptUI.activated = true;
+            } 
+        }
     }
 }
