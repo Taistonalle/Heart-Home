@@ -13,6 +13,7 @@ public class PlayerManager : MonoBehaviour {
     //bool dash;
     [Range(0, 100)] public int healthPoints = 100;
     public float onDMGFlashSpeed;
+    public bool breadMade; // Placeholder paikka tälle
     bool canBeDamaged = true;
     SpriteRenderer sR;
     Color alpha;

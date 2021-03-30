@@ -394,6 +394,22 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 547460658, guid: a9757d464b1a5aa439104d3455b11321, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 547460658, guid: a9757d464b1a5aa439104d3455b11321, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 547460658, guid: a9757d464b1a5aa439104d3455b11321, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 78.619995
+      objectReference: {fileID: 0}
+    - target: {fileID: 547460658, guid: a9757d464b1a5aa439104d3455b11321, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 59.199997
+      objectReference: {fileID: 0}
     - target: {fileID: 5156879668434464259, guid: a9757d464b1a5aa439104d3455b11321, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -493,6 +509,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kitchen
       objectReference: {fileID: 0}
+    - target: {fileID: 5707795379992546605, guid: 0413fa95798e81a4c99b70a57b91bce8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7259513765048427874, guid: 0413fa95798e81a4c99b70a57b91bce8, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -535,6 +555,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7259513765048427874, guid: 0413fa95798e81a4c99b70a57b91bce8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303643798935330590, guid: 0413fa95798e81a4c99b70a57b91bce8, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -16,12 +16,14 @@ public class RecipeButtonScript : MonoBehaviour
     public ItemDataScriptable mainIngredient;
     public ItemDataScriptable secondIngredient;
     InventoryManager inventoryManager;
+    PlayerManager pManager; //Teemun lisäys
     bool hasMainIngredient;
     bool hasSecondIngredient;
     public Recipes recipe;
 
     private void Awake() {
         inventoryManager = FindObjectOfType<InventoryManager>();
+        pManager = FindObjectOfType<PlayerManager>();
     }
 
     void Update() {
@@ -40,6 +42,7 @@ public class RecipeButtonScript : MonoBehaviour
     void CookDish() {
         //inventoryManager.AddItemToDishInventory()
         print("Cooked" + recipeName);
+        if (recipe.name == "Bread") pManager.breadMade = true; //Teemun placeholder lisäys
         inventoryManager.AddFoodInInventory(inventoryManager.personalInvFood, recipe);
         inventoryManager.RemovItemInInventory(inventoryManager.personalInvIngredients, mainIngredient);
         inventoryManager.RemovItemInInventory(inventoryManager.personalInvIngredients, secondIngredient);
