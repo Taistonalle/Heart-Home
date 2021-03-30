@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6527759281869027723}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pollen
-  m_TagString: Untagged
+  m_TagString: Pollen
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,9 +45,10 @@ GameObject:
   - component: {fileID: 6527759282236642260}
   - component: {fileID: 6527759282236642261}
   - component: {fileID: 6527759282236642262}
-  m_Layer: 0
+  - component: {fileID: 605506330}
+  m_Layer: 8
   m_Name: Components
-  m_TagString: Untagged
+  m_TagString: Pollen
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,6 +134,28 @@ MonoBehaviour:
   patrolPoints:
   - {fileID: 6527759282333785843}
   - {fileID: 6527759282734203584}
+--- !u!114 &605506330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6527759282236642256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d39cab04c106cd149bf2fc8d40e6cb49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contact:
+    serializedVersion: 2
+    m_Bits: 64
+  healthPoints: 100
+  boxCastXAxis: 0.96
+  boxCastYAxis: 0.16
+  XAxisOffset: -0.18
+  YAxisOffset: 0.55
+  headBounceForce: 8
+  canBeBounced: 1
 --- !u!1 &6527759282333785852
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,7 +228,7 @@ GameObject:
   - component: {fileID: 6527759282735903404}
   - component: {fileID: 6527759282735903405}
   - component: {fileID: 6527759282735903395}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -245,7 +268,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 60f9f9cc274d8674eb9e000f777469d3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

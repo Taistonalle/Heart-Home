@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KorentoManager : MonoBehaviour {
-    KorentoController kController;
+public class PollenManager : MonoBehaviour {
+    //PollenController pollenController;
     RaycastHit2D playerOnTop;
     PlayerController pController;
-    AudioSource audioSource;
-    public GameObject dropPrefab;
-    public AudioClip deathSound;
+    //AudioSource audioSource;
+    //public GameObject dropPrefab;
+    //public AudioClip deathSound;
     public LayerMask contact;
     TintControl tintControl;
     [Range(0, 100)] public int healthPoints = 100;
@@ -20,12 +20,12 @@ public class KorentoManager : MonoBehaviour {
     void Start() {
         tintControl = GetComponentInChildren<TintControl>();
         pController = FindObjectOfType<PlayerController>();
-        kController = GetComponent<KorentoController>();
-        audioSource = GetComponent<AudioSource>();
+        //pollenController = GetComponent<PollenController>();
+        //audioSource = GetComponent<AudioSource>();
     }
 
     void Update() {
-        dropPrefab.transform.position = transform.position;
+        //dropPrefab.transform.position = transform.position;
         healthPoints = Mathf.Clamp(healthPoints, 0, 100);
 
         if (healthPoints <= 0 && !dead) {
@@ -56,13 +56,12 @@ public class KorentoManager : MonoBehaviour {
     public void Damage(int d) {
         healthPoints -= d;
         tintControl.Damage();
-        kController.state = KorentoState.TakingDamage;
     }
     void Death() {
-        Instantiate(dropPrefab);
-        audioSource.Stop();
-        audioSource.PlayOneShot(deathSound);
-        Destroy(gameObject, deathSound.length);
+        //Instantiate(dropPrefab);
+        //audioSource.Stop();
+        //audioSource.PlayOneShot(deathSound);
+        Destroy(gameObject);
         print("Monster defeated!");
     }
 

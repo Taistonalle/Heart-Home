@@ -7,6 +7,7 @@ public class PlayerAttacks : MonoBehaviour {
     PlayerController pController;
     MonsterManager mManager;
     KorentoManager kManager;
+    PollenManager pollenManager;
     Vector2 midPoint;
     RaycastHit2D midRay;
     public LayerMask collisionMask;
@@ -62,15 +63,20 @@ public class PlayerAttacks : MonoBehaviour {
     }
 
     void MManagerAndLightDMG() {
-        if(midRay.rigidbody.tag == "Monster") {
+        if (midRay.rigidbody.tag == "Monster") {
             mManager = midRay.rigidbody.GetComponent<MonsterManager>();
             mManager.Damage(lightAttackDMG);
         }
-        else if(midRay.rigidbody.tag == "Korento") {
+        else if (midRay.rigidbody.tag == "Korento") {
             kManager = midRay.rigidbody.GetComponent<KorentoManager>();
             kManager.Damage(lightAttackDMG);
         }
+        else if (midRay.rigidbody.tag == "Pollen") {
+            pollenManager = midRay.rigidbody.GetComponent<PollenManager>();
+            pollenManager.Damage(lightAttackDMG);
+        }
     }
+    
     void MManagerAndHeavyDMG() {
         if (midRay.rigidbody.tag == "Monster") {
             mManager = midRay.rigidbody.GetComponent<MonsterManager>();
@@ -81,6 +87,7 @@ public class PlayerAttacks : MonoBehaviour {
             kManager.Damage(heavyAttackDMG);
         }
     }
+    
     public void LightAttack() {
         var upRight = new Vector2 (1f,1f);
         var upLeft = new Vector2(-1f,1f);
@@ -105,7 +112,7 @@ public class PlayerAttacks : MonoBehaviour {
             Debug.LogWarning("No target in range(left)");
         }
     }
-
+    
     public IEnumerator HeavyDMGBuildUp() {
         heavyAttackDMG += 1;
         heavyAttackForce += 0.2f;
@@ -138,4 +145,5 @@ public class PlayerAttacks : MonoBehaviour {
             Debug.LogWarning("No target in range(left)");
         }
     }
+    
 }

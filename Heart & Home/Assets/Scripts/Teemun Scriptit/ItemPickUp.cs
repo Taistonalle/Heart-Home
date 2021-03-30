@@ -20,12 +20,25 @@ public class ItemPickUp : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D collision) {
         //placeHolderText.SetActive(true);
-        pickUpText.NewText(infoText);
-        audioSource.PlayOneShot(pickUpSound);
+        if(collision.gameObject.tag == "Player") {
+            pickUpText.NewText(infoText);
+            audioSource.PlayOneShot(pickUpSound);
 
-        invManager.AddItemInInventory(invManager.personalInvIngredients, itemToAdd);
-        gameObject.SetActive(false);
-        print("Added " + itemToAdd.item);
+            invManager.AddItemInInventory(invManager.personalInvIngredients, itemToAdd);
+            gameObject.SetActive(false);
+            print("Added " + itemToAdd.item);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision) { //Drop
+        if (collision.gameObject.tag == "Player") {
+            pickUpText.NewText(infoText);
+            audioSource.PlayOneShot(pickUpSound);
+
+            invManager.AddItemInInventory(invManager.personalInvIngredients, itemToAdd);
+            gameObject.SetActive(false);
+            print("Added " + itemToAdd.item);
+        }
     }
 
     void OnTriggerExit2D(Collider2D collision) {

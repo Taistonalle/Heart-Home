@@ -365,6 +365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ec691ffd5943544bb5529079a4b0d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dropPrefab: {fileID: 6201269139541052553, guid: c27a1ab1074766d498bfdead463b0ab1, type: 3}
   deathSound: {fileID: 8300000, guid: 35dca88a53ad3624698a6890907d64b3, type: 3}
   contact:
     serializedVersion: 2
