@@ -4047,6 +4047,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5542702677564880194}
   - component: {fileID: 5542702677564880253}
+  - component: {fileID: 5510992331842580142}
   m_Layer: 0
   m_Name: StartBackyardGridMuokattuna
   m_TagString: Untagged
@@ -4089,6 +4090,19 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!114 &5510992331842580142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5542702677564880252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 802496cab49a21343a624fd6e5b36fcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: "Mets\xE4"
 --- !u!1 &5606659297477327684
 GameObject:
   m_ObjectHideFlags: 0
@@ -4307,6 +4321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 624ee7de76554684ea2e82d55fd156a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  "n\xE4kym\xE4t\xF6nSein\xE4Triggeri": I'm too hungry to go on..
 --- !u!1 &8755471525420904481
 GameObject:
   m_ObjectHideFlags: 0
