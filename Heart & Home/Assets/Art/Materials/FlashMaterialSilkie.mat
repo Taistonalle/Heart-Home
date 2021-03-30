@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-6804236024708033202
-MonoBehaviour:
-  m_ObjectHideFlags: 11
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 4
 --- !u!21 &2100000
 Material:
   serializedVersion: 6
@@ -20,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FlashingMaterialSilkie
+  m_Name: FlashMaterialSilkie
   m_Shader: {fileID: -6465566751694194690, guid: 757c00598f0a3924b93248dca8d0d693, type: 3}
   m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
@@ -32,28 +19,8 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - BaseTexture:
-        m_Texture: {fileID: 10912, guid: 0000000000000000f000000000000000, type: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_2936d14f189d4a00a32c9543bee5e748:
-        m_Texture: {fileID: 10912, guid: 0000000000000000f000000000000000, type: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_6c6fad017b0d47688f36f6eef4f5c76d:
-        m_Texture: {fileID: 10912, guid: 0000000000000000f000000000000000, type: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture2D_9dd4058f934646bdb10da615dd54f0ab:
-        m_Texture: {fileID: 2800000, guid: fc0dda729eb325b45bfa18c6e2f7af57, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _BaseTexture:
-        m_Texture: {fileID: 2800000, guid: e69f400fb6d91a34cb1aab125e50c111, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
@@ -92,10 +59,6 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _SilkieTextures:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -113,10 +76,6 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Directionality: 0.5
-    - FlashAmount: 0
-    - Vector1_b70bb0b25c07457b9496dd2ca07d4d2a: 0.02
-    - Vector1_bb45a3c4505b4e86976dd79571ac7254: 0.5
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -141,21 +100,26 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
-<<<<<<< HEAD
-    - _TintAmount: 0.00000005355438
-=======
-    - _TintAmount: 0
->>>>>>> 19e5487a9623168d7718b69f0de41d394f825999
+    - _TintAmount: 7e-45
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_043075b8ab9a46c2800dc46391fccdb1: {r: 1, g: 0, b: 0, a: 0.59607846}
-    - Color_45bf10fa1caf4983b7fd5239c7738c77: {r: 1, g: 1, b: 1, a: 1}
-    - Color_b4f61897ed7a4aa7bfaf7b6f4cb7041f: {r: 1, g: 0, b: 0, a: 1}
-    - FlashColor: {r: 0.9622642, g: 0.06808472, b: 0.06808472, a: 0.7882353}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
     - _TintColor: {r: 23.968628, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []
+--- !u!114 &326062476120624621
+MonoBehaviour:
+  m_ObjectHideFlags: 11
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 4
