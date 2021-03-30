@@ -81,5 +81,10 @@ public class LevelManager : MonoBehaviour {
         currentLevelID = levelID;
         saveLoad.Save();
         player.transform.position = waypoint.transform.position;
+
+        var audioId = level.GetComponentInChildren<LevelAudioEnv>();
+        if(audioId != null) {
+            AudioFW.FadeAmbient(audioId.id);
+        }
     }
 }

@@ -42,6 +42,11 @@ GameObject:
   m_Component:
   - component: {fileID: 867123650186527831}
   - component: {fileID: 867123650186527830}
+  - component: {fileID: 5706585943256401051}
+  - component: {fileID: 5786230683509742776}
+  - component: {fileID: 6930004231240915777}
+  - component: {fileID: 3096933834530778434}
+  - component: {fileID: 448851887412110139}
   m_Layer: 0
   m_Name: RiverRoomGrid muokattuna
   m_TagString: Untagged
@@ -81,6 +86,75 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!114 &5706585943256401051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867123650186527829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 802496cab49a21343a624fd6e5b36fcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: "Mets\xE4"
+--- !u!114 &5786230683509742776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867123650186527829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8111fa97d565d3a4f855cf504eaf5a85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volume: 0
+  audioId: "Yl\xE4Mets\xE4"
+--- !u!114 &6930004231240915777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867123650186527829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8111fa97d565d3a4f855cf504eaf5a85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volume: 0.5
+  audioId: "Mets\xE4"
+--- !u!114 &3096933834530778434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867123650186527829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8111fa97d565d3a4f855cf504eaf5a85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volume: 1
+  audioId: River
+--- !u!114 &448851887412110139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 867123650186527829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8111fa97d565d3a4f855cf504eaf5a85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volume: 1
+  audioId: JuurakkoAmb
 --- !u!1 &867123650634288179
 GameObject:
   m_ObjectHideFlags: 0
