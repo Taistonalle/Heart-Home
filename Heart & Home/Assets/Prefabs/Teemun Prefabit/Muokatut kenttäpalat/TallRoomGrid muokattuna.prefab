@@ -702,6 +702,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5965636414227163089}
   - component: {fileID: 5965636414227163090}
+  - component: {fileID: 1897427185734897830}
   m_Layer: 0
   m_Name: TallRoomGrid muokattuna
   m_TagString: Untagged
@@ -745,6 +746,19 @@ Grid:
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
+--- !u!114 &1897427185734897830
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5965636414227163091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 802496cab49a21343a624fd6e5b36fcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: Juurakko
 --- !u!1 &5965636414405818102
 GameObject:
   m_ObjectHideFlags: 0

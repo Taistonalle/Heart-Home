@@ -20,6 +20,7 @@ public class Gamemanager : MonoBehaviour {
     }
 
     void GoToKitchen() {
+        AudioFW.FadeAmbient("Keittiö");
         kitchenManager.EnterKitchen();
         saveLoad.Save();
     }

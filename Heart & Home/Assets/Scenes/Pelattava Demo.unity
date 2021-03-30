@@ -560,60 +560,60 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5187427659633539815, guid: be5e352c8e1a7c847b69e7dda9c839b3, type: 3}
   m_PrefabInstance: {fileID: 104790938}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &5052077842876589910
+--- !u!1001 &185357405013194917
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5052077841381256352, guid: de641265f51793d4a8c6426ed0427b37, type: 3}
+    - target: {fileID: 185357404505757363, guid: 9aa4a2d717fcb6248828420064773547, type: 3}
+      propertyPath: m_Name
+      value: AudioFW
+      objectReference: {fileID: 0}
+    - target: {fileID: 185357404505757373, guid: 9aa4a2d717fcb6248828420064773547, type: 3}
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 5052077841381256352, guid: de641265f51793d4a8c6426ed0427b37, type: 3}
+    - target: {fileID: 185357404505757373, guid: 9aa4a2d717fcb6248828420064773547, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -11.008415
       objectReference: {fileID: 0}
-    - target: {fileID: 5052077841381256352, guid: de641265f51793d4a8c6426ed0427b37, type: 3}
+    - target: {fileID: 185357404505757373, guid: 9aa4a2d717fcb6248828420064773547, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 13.962397
       objectReference: {fileID: 0}
-    - target: {fileID: 5052077841381256352, guid: de641265f51793d4a8c6426ed0427b37, type: 3}
+    - target: {fileID: 185357404505757373, guid: 9aa4a2d717fcb6248828420064773547, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -21.916851
       objectReference: {fileID: 0}
-    - target: {fileID: 5052077841381256352, guid: de641265f51793d4a8c6426ed0427b37, type: 3}
+    - target: {fileID: 185357404505757373, guid: 9aa4a2d717fcb6248828420064773547, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5052077841381256352, guid: de641265f51793d4a8c6426ed0427b37, type: 3}
+    - target: {fileID: 185357404505757373, guid: 9aa4a2d717fcb6248828420064773547, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5052077841381256352, guid: de641265f51793d4a8c6426ed0427b37, type: 3}
+    - target: {fileID: 185357404505757373, guid: 9aa4a2d717fcb6248828420064773547, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5052077841381256352, guid: de641265f51793d4a8c6426ed0427b37, type: 3}
+    - target: {fileID: 185357404505757373, guid: 9aa4a2d717fcb6248828420064773547, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5052077841381256352, guid: de641265f51793d4a8c6426ed0427b37, type: 3}
+    - target: {fileID: 185357404505757373, guid: 9aa4a2d717fcb6248828420064773547, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5052077841381256352, guid: de641265f51793d4a8c6426ed0427b37, type: 3}
+    - target: {fileID: 185357404505757373, guid: 9aa4a2d717fcb6248828420064773547, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5052077841381256352, guid: de641265f51793d4a8c6426ed0427b37, type: 3}
+    - target: {fileID: 185357404505757373, guid: 9aa4a2d717fcb6248828420064773547, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5052077841381256357, guid: de641265f51793d4a8c6426ed0427b37, type: 3}
-      propertyPath: m_Name
-      value: Music
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: de641265f51793d4a8c6426ed0427b37, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 9aa4a2d717fcb6248828420064773547, type: 3}
