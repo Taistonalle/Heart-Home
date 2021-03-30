@@ -6,18 +6,10 @@ public class ReturnButton : MonoBehaviour
 {
     public LetterScript letterScript;
     public SelectedUI uI;
-    public SelectedUI containerUI;
     void Update()
     {
         if (uI.activated == true) {
-            CloseLetter();
+            letterScript.Close();
         }
-    }
-
-    public void CloseLetter() {
-       
-        letterScript.Close();
-        letterScript.gameObject.SetActive(false);
-        containerUI.activated = false;
     }
 }

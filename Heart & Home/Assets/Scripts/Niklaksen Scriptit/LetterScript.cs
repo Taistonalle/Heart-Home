@@ -11,6 +11,7 @@ public class LetterScript : MonoBehaviour
     int letterSwitch = 0;
     public SelectedUI returnUI;
     public SelectedUI acceptUI;
+    public NoitceBoardLetterControll noitce;
 
 
     private void Update() {
@@ -30,6 +31,8 @@ public class LetterScript : MonoBehaviour
     public void Close() {
         returnUI.activated = false;
         acceptUI.activated = false;
+        noitce.enabled = true;
+        gameObject.SetActive(false);
     }
     void LetterMovement() {
         if (Input.GetKeyDown(KeyCode.D)) {
@@ -38,18 +41,23 @@ public class LetterScript : MonoBehaviour
             } else if (letterSwitch == 1) {
                 letterSwitch = 0;
             }
+
+            
         } else if (Input.GetKeyDown(KeyCode.A)) {
             if (letterSwitch == 0) {
                 letterSwitch = 1;
             } else if (letterSwitch == 1) {
                 letterSwitch = 0;
             }
+
+            
         } else if (Input.GetKeyDown(KeyCode.E)) {
             if (letterSwitch == 0) {
                 returnUI.activated = true;
             } else if (letterSwitch == 1) {
                 acceptUI.activated = true;
-            } 
+            }
+            
         }
     }
 }

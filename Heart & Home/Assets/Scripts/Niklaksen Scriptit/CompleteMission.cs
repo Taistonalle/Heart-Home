@@ -22,7 +22,7 @@ public class CompleteMission : MonoBehaviour
                 inv.personalInvFood.recipes.Remove(dish);
                 effectEnable.EnableEffect(letterScript.reward);
                 letterScript.completedMission = true;
-                returnButton.CloseLetter();
+                letterScript.Close();
             } else print("you dont have the needed dish");
        }
     }
