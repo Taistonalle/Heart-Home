@@ -23,6 +23,7 @@ public class CompleteMission : MonoBehaviour
                 effectEnable.EnableEffect(letterScript.reward);
                 letterScript.completedMission = true;
                 letterScript.Close();
+                print("completed mission");
             } else print("you dont have the needed dish");
        }
     }
