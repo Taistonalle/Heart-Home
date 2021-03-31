@@ -777,24 +777,23 @@ MonoBehaviour:
   minVolume: 0
   maxY: 52
   minY: 27
-  restoreVolume: 0
   curve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: -0.0027198792
       value: 1.0026567
-      inSlope: -2.0131817
-      outSlope: -2.0131817
+      inSlope: -1.8109865
+      outSlope: -1.8109865
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 0.49777222
-      value: -0.004924774
-      inSlope: -2.0131817
-      outSlope: -2.0131817
+      time: 0.6284472
+      value: -0.14037839
+      inSlope: -1.8109865
+      outSlope: -1.8109865
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -819,7 +818,6 @@ MonoBehaviour:
   minVolume: 0
   maxY: 52
   minY: 27
-  restoreVolume: 1
   curve:
     serializedVersion: 2
     m_Curve:

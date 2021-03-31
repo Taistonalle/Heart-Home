@@ -210,10 +210,10 @@ RectTransform:
   m_Father: {fileID: 2011094748}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -154.8}
-  m_SizeDelta: {x: 330, y: 78.62}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 59.199997}
+  m_SizeDelta: {x: 330, y: 78.619995}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &547460661
 CanvasRenderer:
@@ -720,8 +720,8 @@ MonoBehaviour:
   heavyAttackCooldown: 1.5
   animPlayer: {fileID: 5156879666677476534}
   fallSpeed: 12
-  jumpMidOne_yTH: 0
-  jumpMidTwo_yTH: 0
+  jumpMidOne_yTH: 3
+  jumpMidTwo_yTH: 2
   jumpMidThree_yTH: 0
 --- !u!114 &5156879668434464258
 MonoBehaviour:
@@ -761,6 +761,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoints: 100
   onDMGFlashSpeed: 0.05
+  breadMade: 0
 --- !u!82 &893797548189953465
 AudioSource:
   m_ObjectHideFlags: 0
@@ -773,7 +774,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.57
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -4111,13 +4111,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5542702677564880252}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bc6482684b8b4ad42bf477b53f360942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelID: Level5
-  spawnID: Level5TopLeft
+  levelID: RiverRoom
+  spawnID: River
 --- !u!1 &5606659297477327684
 GameObject:
   m_ObjectHideFlags: 0
