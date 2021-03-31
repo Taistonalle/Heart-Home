@@ -12,6 +12,7 @@ public class AudioFW : MonoBehaviour {
     Dictionary<string, AudioSource> loops = new Dictionary<string, AudioSource>();
     Dictionary<string, AudioFWRandomizer> randomSfx = new Dictionary<string, AudioFWRandomizer>();
     Dictionary<string, List<string>> audioEnvs = new Dictionary<string, List<string>>();
+    Dictionary<string, float> restoreVolume = new Dictionary<string, float>();
     string currentAudioEnv = "";
     public static void Play(string id) {
         instance.PlayImpl(id);
@@ -26,6 +27,14 @@ public class AudioFW : MonoBehaviour {
     public static void AdjustPitch(string id, float pitch) {
         instance.AdjustPitchImpl(id, pitch);
     }
+    public static void AdjustVolume(string id, float volume) {
+        instance.AdjustVolumeImpl(id, volume);
+    }
+    public static void RestoreVolume(string id) {
+        instance.RestoreVolumeImpl(id);
+    }
+
+
 
     public static void FadeAmbient(string id) {
         instance.FadeAmbientImpl(id);
@@ -94,6 +103,23 @@ public class AudioFW : MonoBehaviour {
         loops[id].pitch = Mathf.Clamp(pitch, -3f, 3f);
         //print("Pitch adjusted");
     }
+
+    void AdjustVolumeImpl(string id, float volume) {
+        if (!loops.ContainsKey(id)) {
+            Debug.LogWarning("No sound with ID " + id);
+            return;
+        }
+        loops[id].volume = volume;
+        //print("Pitch adjusted");
+    }
+    void RestoreVolumeImpl(string id) {
+        if (!loops.ContainsKey(id)) {
+            Debug.LogWarning("No sound with ID " + id);
+            return;
+        }
+        loops[id].volume = restoreVolume[id];
+        //print("Pitch adjusted");
+    }
     static public AudioFW instance {
         get {
             if (!_instance) {
@@ -122,6 +148,7 @@ public class AudioFW : MonoBehaviour {
         }
         var audioSources2 = transform.Find("Loops").GetComponentsInChildren<AudioSource>();
         foreach (var a in audioSources2) {
+            restoreVolume.Add(a.name, a.volume);
             loops.Add(a.name, a);
         }
 

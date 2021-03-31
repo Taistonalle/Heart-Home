@@ -410,6 +410,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 59.199997
       objectReference: {fileID: 0}
+    - target: {fileID: 1126142584, guid: a9757d464b1a5aa439104d3455b11321, type: 3}
+      propertyPath: tintMat
+      value: 
+      objectReference: {fileID: 2100000, guid: 0f47771aee17cc84fa3f3173d2907a04, type: 2}
+    - target: {fileID: 5156879666677476532, guid: a9757d464b1a5aa439104d3455b11321, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 0f47771aee17cc84fa3f3173d2907a04, type: 2}
     - target: {fileID: 5156879668434464259, guid: a9757d464b1a5aa439104d3455b11321, type: 3}
       propertyPath: m_RootOrder
       value: 4

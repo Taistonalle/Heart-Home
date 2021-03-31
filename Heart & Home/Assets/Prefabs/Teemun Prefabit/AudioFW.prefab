@@ -43,7 +43,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 009de2d51c09a3d44aa6d46e944f1d45, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -170,7 +170,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bfde98308f90a794291843931678a230, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.359
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -572,7 +572,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 185357404538675145}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &185357404322862165
 MonoBehaviour:
@@ -662,7 +662,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 185357405210502024}
-  - {fileID: 185357404867870613}
   - {fileID: 185357404322862154}
   m_Father: {fileID: 185357404505757373}
   m_RootOrder: 2
@@ -710,7 +709,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8d3f5b4f026962c4b94847b431e26ac5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.244
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -794,52 +793,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &185357404867870602
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 185357404867870613}
-  - component: {fileID: 185357404867870612}
-  m_Layer: 0
-  m_Name: Juurakko
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &185357404867870613
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 185357404867870602}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 185357404538675145}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &185357404867870612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 185357404867870602}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 999046bfc53a4e74b9d297632fe0a1ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  loops:
-  - River
-  - JuurakkoAmb
 --- !u!1 &185357404964869061
 GameObject:
   m_ObjectHideFlags: 0
@@ -914,7 +867,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 48c1d60351430944d832a9461f126523, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1044,3 +997,5 @@ MonoBehaviour:
   loops:
   - "Mets\xE4"
   - "Yl\xE4Mets\xE4"
+  - JuurakkoAmb
+  - River
